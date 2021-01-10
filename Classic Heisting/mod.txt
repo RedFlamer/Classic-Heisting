@@ -27,7 +27,8 @@
 		{ "hook_id" : "lib/units/enemies/cop/actions/upper_body/copactionshoot", "script_path": "cop/actions/upper_body/copactionshoot.lua" },
 		{ "hook_id" : "lib/units/enemies/cop/logics/coplogicidle", "script_path": "cop/logics/coplogicidle.lua" },
 		{ "hook_id" : "lib/units/enemies/cop/logics/coplogictravel", "script_path": "cop/logics/coplogictravel.lua" },
-		{ "hook_id" : "lib/units/beings/player/playerdamage", "script_path": "playerdamage.lua" }
+		{ "hook_id" : "lib/units/beings/player/playerdamage", "script_path": "playerdamage.lua" },
+		{ "hook_id" : "lib/network/matchmaking/networkmatchmakingsteam", "script_path": "networkmatchmakingsteam.lua" }
 	],
 	"updates" : [
 		{
