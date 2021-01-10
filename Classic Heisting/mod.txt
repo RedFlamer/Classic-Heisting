@@ -28,5 +28,13 @@
 		{ "hook_id" : "lib/units/enemies/cop/logics/coplogicidle", "script_path": "cop/logics/coplogicidle.lua" },
 		{ "hook_id" : "lib/units/enemies/cop/logics/coplogictravel", "script_path": "cop/logics/coplogictravel.lua" },
 		{ "hook_id" : "lib/units/beings/player/playerdamage", "script_path": "playerdamage.lua" }
+	],
+	"updates" : [
+		{
+			"identifier" : "classic_heisting",
+			"host" : {
+				"meta" : "https://github.com/RedFlamer/Classic-Heisting/releases/download/refs%2Fheads%2Fmain/meta.json"
+			}
+		}
 	]
 }
