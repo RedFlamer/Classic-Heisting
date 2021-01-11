@@ -1,4 +1,6 @@
-Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self, tweak_data)
+local data = UpgradesTweakData.init
+function UpgradesTweakData:init(tweak_data)
+	data(self, tweak_data)
 	self.values.rep_upgrades.classes = {
 		"rep_upgrade"
 	}
@@ -98,8 +100,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self, tweak_d
 	self.hostage_near_player_radius = 1000
 	self.hostage_near_player_check_t = 0.5
 	self.hostage_near_player_multiplier = 1.25
-	self.weapon_movement_penalty = {}
 	self.weapon_movement_penalty.lmg = 0.8
+	self.weapon_movement_penalty.minigun = 1
 	self.values.player.crime_net_deal = {0.9, 0.8}
 	self.values.player.corpse_alarm_pager_bluff = {true}
 	self.values.player.marked_enemy_extra_damage = {true}
@@ -2084,4 +2086,4 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self, tweak_d
 			value = 1
 		}
 	}
-end)
+end
