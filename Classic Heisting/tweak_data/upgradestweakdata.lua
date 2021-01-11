@@ -1,9 +1,8 @@
-Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "restore_init_pd2_values", function(self)
+Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self, tweak_data)
 	self.values.rep_upgrades.classes = {
 		"rep_upgrade"
 	}
 	self.values.rep_upgrades.values = {2}
-	self.values.player.body_armor = {}
 	self.values.player.body_armor.armor = {
 		0,
 		1,
@@ -1316,9 +1315,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "restore_init_pd2_values",
 			end
 		end
 	end
-end)
-
-Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self)
+	
 	self.level_tree = {}
 	self.level_tree[1] = {
 		name_id = "body_armor",
@@ -1485,14 +1482,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self)
 			"rep_upgrade10"
 		}
 	}
-	self.values.player = self.values.player or {}
-	self.values.player.thick_skin = {
-		2,
-		4,
-		6,
-		8,
-		10
-	}
+	
 	self.values.player.primary_weapon_when_carrying = {true}
 	self.values.player.health_multiplier = {1.1}
 	self.values.player.passive_xp_multiplier = {1.05}
@@ -1509,28 +1499,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self)
 	self.values.player.suppressed_multiplier = {0.5}
 	self.values.player.intimidate_specials = {true}
 	self.values.player.intimidation_multiplier = {1.25}
-	self.steps.player = {}
-	self.steps.player.thick_skin = {
-		nil,
-		8,
-		18,
-		27,
-		39
-	}
-	self.steps.player.extra_ammo_multiplier = {
-		nil,
-		7,
-		16,
-		24,
-		38
-	}
-	self.steps.player.toolset = {
-		nil,
-		7,
-		16,
-		38
-	}
-	self.values.trip_mine = self.values.trip_mine or {}
 	self.values.trip_mine.quantity = {
 		1,
 		2,
@@ -1542,33 +1510,10 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self)
 	self.values.trip_mine.quantity_2 = {2}
 	self.values.trip_mine.quantity_increase = {2}
 	self.values.trip_mine.explode_timer_delay = {2}
-	self.steps.trip_mine = {}
-	self.steps.trip_mine.quantity = {
-		14,
-		22,
-		29,
-		36,
-		42,
-		47
-	}
-	self.steps.trip_mine.damage_multiplier = {6, 32}
 	self.values.ammo_bag = self.values.ammo_bag or {}
-	self.steps.ammo_bag = {}
-	self.steps.ammo_bag.ammo_increase = {
-		10,
-		19,
-		30
-	}
 	self.values.ecm_jammer = self.values.ecm_jammer or {}
 	self.values.sentry_gun = self.values.sentry_gun or {}
-	self.steps.sentry_gun = {}
 	self.values.doctor_bag = self.values.doctor_bag or {}
-	self.steps.doctor_bag = {}
-	self.steps.doctor_bag.amount_increase = {
-		11,
-		19,
-		33
-	}
 	self.values.extra_cable_tie = {}
 	self.values.extra_cable_tie.quantity = {
 		1,
@@ -1576,41 +1521,18 @@ Hooks:PostHook(UpgradesTweakData, "init", "restore_init", function(self)
 		3,
 		4
 	}
-	self.steps.extra_cable_tie = {}
-	self.steps.extra_cable_tie.quantity = {
-		nil,
-		12,
-		23,
-		33
-	}
-	self.definitions.lucky_charm = {
-		category = "what_is_this",
-		name_id = "menu_lucky_charm"
-	}
-	for name, upgrade in pairs(self.definitions) do
-		local unlock_lvl = upgrade.unlock_lvl or 1
-		self.levels[unlock_lvl] = self.levels[unlock_lvl] or {}
-		if upgrade.prio and upgrade.prio == "high" then
-			table.insert(self.levels[unlock_lvl], 1, name)
-		else
-			table.insert(self.levels[unlock_lvl], name)
-		end
-	end
-	for name, upgrade in pairs(self.definitions) do
-		if upgrade.tree then
-			if upgrade.step then
-				if self.progress[upgrade.tree][upgrade.step] then
-					Application:error("upgrade collision", upgrade.tree, upgrade.step, self.progress[upgrade.tree][upgrade.step], name)
-				end
-				self.progress[upgrade.tree][upgrade.step] = name
-			else
-				print(name, upgrade.tree, "is in no step")
-			end
-		end
-	end
-end)
 
-Hooks:PostHook(UpgradesTweakData, "_init_values", "restore_init_values", function(self)
+	self.progress = {
+		{},
+		{},
+		{},
+		{}
+	}
+	self.progress[1][49] = "mr_nice_guy"
+	self.progress[2][49] = "mr_nice_guy"
+	self.progress[3][49] = "mr_nice_guy"
+	self.progress[4][49] = "mr_nice_guy"
+
 	self.values.weapon.reload_speed_multiplier = {1}
 	self.values.weapon.damage_multiplier = {1}
 	self.values.weapon.swap_speed_multiplier = {1.25}
@@ -1618,16 +1540,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_values", "restore_init_values", functio
 	self.values.weapon.auto_spread_multiplier = {1}
 	self.values.weapon.spread_multiplier = {0.9}
 	self.values.weapon.fire_rate_multiplier = {2}
-	self.values.pistol = self.values.pistol or {}
 	self.values.pistol.exit_run_speed_multiplier = {1.25}
-	self.values.assault_rifle = self.values.assault_rifle or {}
-	self.values.smg = self.values.smg or {}
-	self.values.shotgun = self.values.shotgun or {}
-	self.values.carry = self.values.carry or {}
 	self.values.carry.catch_interaction_speed = {0.6, 0.1}
-	self.values.cable_tie = self.values.cable_tie or {}
 	self.values.cable_tie.quantity_unlimited = {true}
-	self.values.temporary = self.values.temporary or {}
 	self.values.temporary.combat_medic_enter_steelsight_speed_multiplier = {
 		{1.2, 15}
 	}
@@ -1640,20 +1555,10 @@ Hooks:PostHook(UpgradesTweakData, "_init_values", "restore_init_values", functio
 	self.values.temporary.revive_health_boost = {
 		{true, 10}
 	}
-	self.values.team = self.values.team or {}
-	self.values.team.player = self.values.team.player or {}
-	self.values.team.pistol = self.values.team.pistol or {}
-	self.values.team.weapon = self.values.team.weapon or {}
 	self.values.team.weapon.suppression_recoil_multiplier = {0.75}
-	self.values.team.xp = self.values.team.xp or {}
-	self.values.team.armor = self.values.team.armor or {}
-	self.values.team.stamina = self.values.team.stamina or {}
-	self.values.saw = self.values.saw or {}
 	self.values.saw.recoil_multiplier = {0.75}
 	self.values.saw.fire_rate_multiplier = {1.25, 1.5}
-end)
 
-Hooks:PostHook(UpgradesTweakData, "_player_definitions", "restore_player_definitions", function(self)
 	self.definitions.player_detection_risk_add_crit_chance = {
 		category = "feature",
 		name_id = "menu_player_detection_risk_add_crit_chance",
@@ -1843,9 +1748,7 @@ Hooks:PostHook(UpgradesTweakData, "_player_definitions", "restore_player_definit
 			value = 1
 		}
 	}
-end)
 
-Hooks:PostHook(UpgradesTweakData, "_trip_mine_definitions", "restore_trip_mine_definitions", function(self)
 	self.definitions.trip_mine = {
 		tree = 2,
 		step = 4,
@@ -1937,9 +1840,7 @@ Hooks:PostHook(UpgradesTweakData, "_trip_mine_definitions", "restore_trip_mine_d
 			value = 1
 		}
 	}
-end)
 
-Hooks:PostHook(UpgradesTweakData, "_ecm_jammer_definitions", "restore_ecm_jammer_definitions", function(self)
 	self.definitions.ecm_jammer = {
 		category = "equipment",
 		equipment_id = "ecm_jammer",
@@ -2045,50 +1946,6 @@ Hooks:PostHook(UpgradesTweakData, "_ecm_jammer_definitions", "restore_ecm_jammer
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_ammo_bag_definitions", "restore_ammo_bag_definitions", function(self)
-	self.definitions.ammo_bag = {
-		tree = 1,
-		step = 2,
-		category = "equipment",
-		equipment_id = "ammo_bag",
-		name_id = "debug_ammo_bag",
-		title_id = "debug_upgrade_new_equipment",
-		subtitle_id = "debug_ammo_bag",
-		icon = "equipment_ammo_bag",
-		image = "upgrades_ammobag",
-		image_slice = "upgrades_ammobag_slice",
-		description_text_id = "ammo_bag",
-		unlock_lvl = 0,
-		prio = "high",
-		slot = 1
-	}
-	for i, _ in ipairs(self.values.ammo_bag.ammo_increase) do
-		local depends_on = i - 1 > 0 and "ammo_bag_ammo_increase" .. i - 1 or "ammo_bag"
-		local unlock_lvl = 11
-		local prio = i == 1 and "high"
-		self.definitions["ammo_bag_ammo_increase" .. i] = {
-			tree = 1,
-			step = self.steps.ammo_bag.ammo_increase[i],
-			category = "equipment_upgrade",
-			name_id = "debug_upgrade_ammo_bag_ammo_increase" .. i,
-			title_id = "debug_ammo_bag",
-			subtitle_id = "debug_upgrade_amount_increase" .. i,
-			icon = "equipment_ammo_bag",
-			image = "upgrades_ammobag",
-			image_slice = "upgrades_ammobag_slice",
-			description_text_id = "ammo_bag_increase",
-			depends_on = depends_on,
-			unlock_lvl = unlock_lvl,
-			prio = prio,
-			upgrade = {
-				category = "ammo_bag",
-				upgrade = "ammo_increase",
-				value = i
-			}
-		}
-	end
 	self.definitions.ammo_bag_quantity = {
 		category = "equipment_upgrade",
 		name_id = "menu_ammo_bag_quantity",
@@ -2098,50 +1955,6 @@ Hooks:PostHook(UpgradesTweakData, "_ammo_bag_definitions", "restore_ammo_bag_def
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_doctor_bag_definitions", "restore_doctor_bag_definitions", function(self)
-	self.definitions.doctor_bag = {
-		tree = 3,
-		step = 5,
-		category = "equipment",
-		equipment_id = "doctor_bag",
-		name_id = "debug_doctor_bag",
-		title_id = "debug_upgrade_new_equipment",
-		subtitle_id = "debug_doctor_bag",
-		icon = "equipment_doctor_bag",
-		image = "upgrades_doctorbag",
-		image_slice = "upgrades_doctorbag_slice",
-		description_text_id = "doctor_bag",
-		unlock_lvl = 2,
-		prio = "high",
-		slot = 1
-	}
-	for i, _ in ipairs(self.values.doctor_bag.amount_increase) do
-		local depends_on = i - 1 > 0 and "doctor_bag_amount_increase" .. i - 1 or "doctor_bag"
-		local unlock_lvl = 3
-		local prio = i == 1 and "high"
-		self.definitions["doctor_bag_amount_increase" .. i] = {
-			tree = 3,
-			step = self.steps.doctor_bag.amount_increase[i],
-			category = "equipment_upgrade",
-			name_id = "debug_upgrade_doctor_bag_amount_increase" .. i,
-			title_id = "debug_doctor_bag",
-			subtitle_id = "debug_upgrade_amount_increase" .. i,
-			icon = "equipment_doctor_bag",
-			image = "upgrades_doctorbag",
-			image_slice = "upgrades_doctorbag_slice",
-			description_text_id = "doctor_bag_increase",
-			depends_on = depends_on,
-			unlock_lvl = unlock_lvl,
-			prio = prio,
-			upgrade = {
-				category = "doctor_bag",
-				upgrade = "amount_increase",
-				value = i
-			}
-		}
-	end
 	self.definitions.doctor_bag_quantity = {
 		category = "equipment_upgrade",
 		name_id = "menu_doctor_bag_quantity",
@@ -2160,9 +1973,7 @@ Hooks:PostHook(UpgradesTweakData, "_doctor_bag_definitions", "restore_doctor_bag
 			value = 1
 		}
 	}
-end)
 
-Hooks:PostHook(UpgradesTweakData, "_cable_tie_definitions", "restore_cable_tie_definitions", function(self)
 	self.definitions.cable_tie = {
 		category = "equipment",
 		equipment_id = "cable_tie",
@@ -2174,50 +1985,6 @@ Hooks:PostHook(UpgradesTweakData, "_cable_tie_definitions", "restore_cable_tie_d
 		unlock_lvl = 0,
 		prio = "high"
 	}
-	self.definitions.extra_cable_tie = {
-		tree = 1,
-		step = 4,
-		category = "equipment",
-		equipment_id = "extra_cable_tie",
-		name_id = "debug_upgrade_extra_cable_tie_quantity1",
-		title_id = "debug_equipment_cable_tie",
-		subtitle_id = "debug_upgrade_amount_increase1",
-		icon = "equipment_extra_cable_ties",
-		image = "upgrades_extracableties",
-		image_slice = "upgrades_extracableties_slice",
-		description_text_id = "extra_cable_tie",
-		unlock_lvl = 3,
-		prio = "high",
-		aquire = {
-			upgrade = "extra_cable_tie_quantity1"
-		},
-		slot = 2
-	}
-	for i, _ in ipairs(self.values.extra_cable_tie.quantity) do
-		local depends_on = 0 < i - 1 and "extra_cable_tie_quantity" .. i - 1 or "extra_cable_tie"
-		local unlock_lvl = 4
-		local prio = i == 1 and "high"
-		self.definitions["extra_cable_tie_quantity" .. i] = {
-			tree = 1,
-			step = self.steps.extra_cable_tie.quantity[i],
-			category = "equipment_upgrade",
-			name_id = "debug_upgrade_extra_cable_tie_quantity" .. i,
-			title_id = "debug_equipment_cable_tie",
-			subtitle_id = "debug_upgrade_amount_increase" .. i,
-			icon = "equipment_extra_cable_ties",
-			image = "upgrades_extracableties",
-			image_slice = "upgrades_extracableties_slice",
-			description_text_id = "extra_cable_tie",
-			depends_on = depends_on,
-			unlock_lvl = unlock_lvl,
-			prio = prio,
-			upgrade = {
-				category = "extra_cable_tie",
-				upgrade = "quantity",
-				value = i
-			}
-		}
-	end
 	self.definitions.cable_tie_quantity = {
 		category = "equipment_upgrade",
 		name_id = "menu_cable_tie_quantity",
@@ -2254,9 +2021,6 @@ Hooks:PostHook(UpgradesTweakData, "_cable_tie_definitions", "restore_cable_tie_d
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_sentry_gun_definitions", "restore_sentry_gun_definitions", function(self)
 	self.definitions.sentry_gun_quantity_increase = {
 		category = "feature",
 		name_id = "menu_sentry_gun_quantity_increase",
@@ -2266,9 +2030,6 @@ Hooks:PostHook(UpgradesTweakData, "_sentry_gun_definitions", "restore_sentry_gun
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_weapon_definitions", "restore_weapon_definitions", function(self)
 	self.definitions.weapon_silencer_damage_multiplier_1 = {
 		category = "feature",
 		name_id = "silencer_damage_multiplier",
@@ -2287,9 +2048,6 @@ Hooks:PostHook(UpgradesTweakData, "_weapon_definitions", "restore_weapon_definit
 			value = 2
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_pistol_definitions", "restore_pistol_definitions", function(self)
 	self.definitions.pistol_stacking_hit_damage_multiplier = {
 		category = "feature",
 		name_id = "menu_pistol_stacking_hit_damage_multiplier",
@@ -2299,9 +2057,6 @@ Hooks:PostHook(UpgradesTweakData, "_pistol_definitions", "restore_pistol_definit
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_shotgun_definitions", "restore_shotgun_definitions", function(self)
 	self.definitions.shotgun_damage_multiplier = {
 		category = "feature",
 		name_id = "menu_shotgun_damage_multiplier",
@@ -2320,9 +2075,6 @@ Hooks:PostHook(UpgradesTweakData, "_shotgun_definitions", "restore_shotgun_defin
 			value = 1
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "_temporary_definitions", "restore_temporary_definitions", function(self)
 	self.definitions.temporary_berserker_damage_multiplier = {
 		category = "temporary",
 		name_id = "menu_temporary_berserker_damage_multiplier",

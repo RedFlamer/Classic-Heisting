@@ -1,5 +1,7 @@
-Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
-	local digest = function(value)
+local data = SkillTreeTweakData.init
+function SkillTreeTweakData:init(tweak_data)
+	data(self, tweak_data)
+	local function digest(value)
 		return Application:digest_value(value, true)
 	end
 	self.tier_unlocks = {
@@ -10,6 +12,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 		digest(30),
 		digest(40)
 	}
+	self.skill_pages_order = {
+		"mastermind",
+		"enforcer",
+		"technician",
+		"ghost"
+	}
 	self.costs = {
 		unlock_tree = digest(1),
 		default = digest(1),
@@ -18,7 +26,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 		hightierpro = digest(8)
 	}
 	self.unlock_tree_cost = {
-		digest(0),
 		digest(0),
 		digest(0),
 		digest(0),
@@ -209,38 +216,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			desc_id = "menu_ghost_tier_6"
 		}
 	}
-	self.skills.hoxton = {
-		["name_id"] = "menu_hoxton_pack",
-		["desc_id"] = "menu_hoxton_pack_desc",
-		["icon_xy"] = {3, 10},
-		[1] = {
-			upgrades = {
-				"first_aid_kit"
-			},
-			cost = self.costs.unlock_tree,
-			desc_id = "menu_hoxton_tier_1"
-		},
-		[2] = {
-			upgrades = {},
-			desc_id = "menu_hoxton_tier_2"
-		},
-		[3] = {
-			upgrades = {},
-			desc_id = "menu_hoxton_tier_3"
-		},
-		[4] = {
-			upgrades = {},
-			desc_id = "menu_hoxton_tier_4"
-		},
-		[5] = {
-			upgrades = {},
-			desc_id = "menu_hoxton_tier_5"
-		},
-		[6] = {
-			upgrades = {},
-			desc_id = "menu_hoxton_tier_6"
-		}
-	}
 	self.skills.black_marketeer = {
 		["name_id"] = "menu_black_marketeer",
 		["desc_id"] = "menu_black_marketeer_desc",
@@ -341,18 +316,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			upgrades = {
 				"player_additional_assets"
 			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.target_mark = {
-		["name_id"] = "menu_target_mark",
-		["desc_id"] = "menu_target_mark_desc",
-		["icon_xy"] = {3, 7},
-		[1] = {
-			upgrades = {},
-			cost = self.costs.default
-		},
-		[2] = {
 			cost = self.costs.pro
 		}
 	}
@@ -495,17 +458,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			cost = self.costs.pro
 		}
 	}
-	self.skills.negotiator = {
-		["name_id"] = "menu_negotiator",
-		["desc_id"] = "menu_negotiator_desc",
-		["icon_xy"] = {7, 8},
-		[1] = {
-			cost = self.costs.hightier
-		},
-		[2] = {
-			cost = self.costs.hightierpro
-		}
-	}
 	self.skills.medic_2x = {
 		["name_id"] = "menu_medic_2x",
 		["desc_id"] = "menu_medic_2x_desc",
@@ -592,19 +544,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			upgrades = {
 				"temporary_no_ammo_cost_2"
 			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.demolition_man = {
-		["name_id"] = "menu_demolition_man",
-		["desc_id"] = "menu_demolition_man_desc",
-		["icon_xy"] = {4, 5},
-		[1] = {
-			upgrades = {},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {},
 			cost = self.costs.pro
 		}
 	}
@@ -1111,38 +1050,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			cost = self.costs.pro
 		}
 	}
-	self.skills.military_grade = {
-		["name_id"] = "menu_military_grade",
-		["desc_id"] = "menu_military_grade_desc",
-		["icon_xy"] = {4, 6},
-		[1] = {
-			upgrades = {
-				"trip_mine_quantity_increase_2"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.dye_pack_removal = {
-		["name_id"] = "menu_dye_pack_removal",
-		["desc_id"] = "menu_dye_pack_removal_desc",
-		["icon_xy"] = {0, 6},
-		[1] = {
-			upgrades = {
-				"player_dye_pack_chance_multiplier"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"player_dye_pack_cash_loss_multiplier"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
 	self.skills.silent_drilling = {
 		["name_id"] = "menu_silent_drilling",
 		["desc_id"] = "menu_silent_drilling_desc",
@@ -1280,23 +1187,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 				"player_run_speed_multiplier"
 			},
 			cost = self.costs.pro
-		}
-	}
-	self.skills.smg_training = {
-		["name_id"] = "menu_smg_training",
-		["desc_id"] = "menu_smg_training_desc",
-		["icon_xy"] = {3, 3},
-		[1] = {
-			upgrades = {
-				"smg_reload_speed_multiplier"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"smg_recoil_multiplier"
-			},
-			cost = self.costs.hightierpro
 		}
 	}
 	self.skills.smg_master = {
@@ -1526,24 +1416,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			cost = self.costs.hightierpro
 		}
 	}
-	self.skills.silence = {
-		["name_id"] = "menu_silence",
-		["desc_id"] = "menu_silence_desc",
-		["icon_xy"] = {4, 4},
-		[1] = {
-			upgrades = {
-				"weapon_silencer_recoil_multiplier"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"weapon_silencer_enter_steelsight_speed_multiplier",
-				"weapon_silencer_spread_multiplier"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
 	self.skills.silence_expert = {
 		["name_id"] = "menu_silence_expert",
 		["desc_id"] = "menu_silence_expert_desc",
@@ -1579,17 +1451,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			cost = self.costs.hightierpro
 		}
 	}
-	self.skills.disguise = {
-		["name_id"] = "menu_disguise",
-		["desc_id"] = "menu_disguise_desc",
-		["icon_xy"] = {6, 4},
-		[1] = {
-			cost = self.costs.hightier
-		},
-		[2] = {
-			cost = self.costs.hightierpro
-		}
-	}
 	self.skills.magic_touch = {
 		["name_id"] = "menu_magic_touch",
 		["desc_id"] = "menu_magic_touch_desc",
@@ -1605,323 +1466,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 			upgrades = {
 				"player_pick_lock_hard",
 				"player_pick_lock_easy_speed_multiplier_2"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.freedom_call = {
-		["name_id"] = "menu_freedom_call",
-		["desc_id"] = "menu_freedom_call_desc",
-		["icon_xy"] = {5, 10},
-		[1] = {
-			upgrades = {
-				"player_climb_speed_multiplier_1"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_on_zipline_dodge_chance"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.hidden_blade = {
-		["name_id"] = "menu_hidden_blade",
-		["desc_id"] = "menu_hidden_blade_desc",
-		["icon_xy"] = {4, 10},
-		[1] = {
-			upgrades = {
-				"player_melee_concealment_modifier"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_silent_kill"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.tea_time = {
-		["name_id"] = "menu_tea_time",
-		["desc_id"] = "menu_tea_time_desc",
-		["icon_xy"] = {1, 11},
-		[1] = {
-			upgrades = {
-				"first_aid_kit_deploy_time_multiplier"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"first_aid_kit_damage_reduction_upgrade"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.awareness = {
-		["name_id"] = "menu_awareness",
-		["desc_id"] = "menu_awareness_desc",
-		["icon_xy"] = {7, 10},
-		[1] = {
-			upgrades = {
-				"player_movement_speed_multiplier"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_steelsight_normal_movement_speed"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.alpha_dog = {
-		["name_id"] = "menu_alpha_dog",
-		["desc_id"] = "menu_alpha_dog_desc",
-		["icon_xy"] = {0, 11},
-		[1] = {
-			upgrades = {
-				"player_crouch_dodge_chance_1"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_crouch_dodge_chance_2"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.tea_cookies = {
-		["name_id"] = "menu_tea_cookies",
-		["desc_id"] = "menu_tea_cookies_desc",
-		["icon_xy"] = {2, 11},
-		[1] = {
-			upgrades = {
-				"first_aid_kit_quantity_increase_1"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"first_aid_kit_quantity_increase_2"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.cell_mates = {
-		["name_id"] = "menu_cell_mates",
-		["desc_id"] = "menu_cell_mates_desc",
-		["icon_xy"] = {4, 11},
-		[1] = {
-			upgrades = {
-				"player_gangster_damage_dampener_1"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_gangster_damage_dampener_2"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.thug_life = {
-		["name_id"] = "menu_thug_life",
-		["desc_id"] = "menu_thug_life_desc",
-		["icon_xy"] = {3, 12},
-		[1] = {
-			upgrades = {
-				"player_extra_corpse_dispose_amount"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_cleaner_cost_multiplier"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.thick_skin = {
-		["name_id"] = "menu_thick_skin",
-		["desc_id"] = "menu_thick_skin_desc",
-		["icon_xy"] = {2, 12},
-		[1] = {
-			upgrades = {
-				"player_damage_shake_addend"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_level_2_armor_addend",
-				"player_level_3_armor_addend",
-				"player_level_4_armor_addend"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.backstab = {
-		["name_id"] = "menu_backstab",
-		["desc_id"] = "menu_backstab_desc",
-		["icon_xy"] = {0, 12},
-		[1] = {
-			upgrades = {
-				"player_detection_risk_add_crit_chance_1"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"player_detection_risk_add_crit_chance_2"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.drop_soap = {
-		["name_id"] = "menu_drop_soap",
-		["desc_id"] = "menu_drop_soap_desc",
-		["icon_xy"] = {4, 12},
-		[1] = {
-			upgrades = {
-				"player_counter_strike_melee"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"player_counter_strike_spooc"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.second_chances = {
-		["name_id"] = "menu_second_chances",
-		["desc_id"] = "menu_second_chances_desc",
-		["icon_xy"] = {5, 11},
-		[1] = {
-			upgrades = {
-				"bodybags_bag"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"bodybags_bag_quantity"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.trigger_happy = {
-		["name_id"] = "menu_trigger_happy",
-		["desc_id"] = "menu_trigger_happy_desc",
-		["icon_xy"] = {7, 11},
-		[1] = {
-			upgrades = {
-				"pistol_stacking_hit_expire_t_1",
-				"pistol_stacking_hit_damage_multiplier"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"pistol_stacking_hit_expire_t_2"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.perseverance = {
-		["name_id"] = "menu_perseverance",
-		["desc_id"] = "menu_perseverance_desc",
-		["icon_xy"] = {5, 12},
-		[1] = {
-			upgrades = {
-				"temporary_berserker_damage_multiplier_1"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"temporary_berserker_damage_multiplier_2",
-				"player_berserker_no_ammo_cost"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.jail_workout = {
-		["name_id"] = "menu_jail_workout",
-		["desc_id"] = "menu_jail_workout_desc",
-		["icon_xy"] = {6, 10},
-		[1] = {
-			upgrades = {
-				"player_standstill_omniscience"
-			},
-			cost = self.costs.default
-		},
-		[2] = {
-			upgrades = {
-				"player_mask_off_pickup"
-			},
-			cost = self.costs.pro
-		}
-	}
-	self.skills.akimbo = {
-		["name_id"] = "menu_akimbo_skill",
-		["desc_id"] = "menu_akimbo_skill_desc",
-		["icon_xy"] = {3, 11},
-		[1] = {
-			upgrades = {
-				"jowi",
-				"x_1911",
-				"x_b92fs",
-				"x_deagle",
-				"akimbo_recoil_multiplier_1",
-				"akimbo_recoil_multiplier_2"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"akimbo_extra_ammo_multiplier_1",
-				"akimbo_extra_ammo_multiplier_2",
-				"akimbo_recoil_multiplier_3"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.jail_diet = {
-		["name_id"] = "menu_jail_diet",
-		["desc_id"] = "menu_jail_diet_desc",
-		["icon_xy"] = {1, 12},
-		[1] = {
-			upgrades = {
-				"player_detection_risk_add_dodge_chance_1"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"player_detection_risk_add_dodge_chance_2"
-			},
-			cost = self.costs.hightierpro
-		}
-	}
-	self.skills.prison_wife = {
-		["name_id"] = "menu_prison_wife",
-		["desc_id"] = "menu_prison_wife_desc",
-		["icon_xy"] = {6, 11},
-		[1] = {
-			upgrades = {
-				"player_headshot_regen_armor_bonus_1"
-			},
-			cost = self.costs.hightier
-		},
-		[2] = {
-			upgrades = {
-				"player_headshot_regen_armor_bonus_2"
 			},
 			cost = self.costs.hightierpro
 		}
@@ -1949,12 +1493,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 		name_id = "st_menu_ghost",
 		skill = "ghost",
 		background_texture = "guis/textures/pd2/skilltree/bg_ghost",
-		tiers = {}
-	}
-	self.trees[5] = {
-		name_id = "st_menu_hoxton_pack",
-		skill = "hoxton",
-		background_texture = "guis/textures/pd2/skilltree/bg_fugitive",
 		tiers = {}
 	}
 	self.trees[1].tiers[1] = {
@@ -2077,36 +1615,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 		"ecm_feedback",
 		"moving_target"
 	}
-	self.trees[5].tiers[1] = {
-		"freedom_call",
-		"hidden_blade",
-		"thick_skin"
-	}
-	self.trees[5].tiers[2] = {
-		"awareness",
-		"jail_workout",
-		"alpha_dog"
-	}
-	self.trees[5].tiers[3] = {
-		"cell_mates",
-		"thug_life",
-		"tea_time"
-	}
-	self.trees[5].tiers[4] = {
-		"perseverance",
-		"second_chances",
-		"tea_cookies"
-	}
-	self.trees[5].tiers[5] = {
-		"trigger_happy",
-		"backstab",
-		"drop_soap"
-	}
-	self.trees[5].tiers[6] = {
-		"prison_wife",
-		"jail_diet",
-		"akimbo"
-	}
 	self.default_upgrades = {
 		"cable_tie",
 		"player_special_enemy_highlight",
@@ -2117,4 +1625,4 @@ Hooks:PostHook(SkillTreeTweakData, "init", "restore_init", function(self)
 		"player_civ_harmless_melee",
 		"striker_reload_speed_default"
 	}
-end)
+end

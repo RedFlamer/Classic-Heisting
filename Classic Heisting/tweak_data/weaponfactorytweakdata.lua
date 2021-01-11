@@ -1,5 +1,3 @@
-
-
 Hooks:PostHook(WeaponFactoryTweakData, "_init_silencers", "restore", function(self)
 	self.parts.wpn_fps_upg_ns_ass_smg_large = {
 		pcs = {
@@ -507,6 +505,19 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
 		},
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
+		},
+		texture_switch = {
+			channel = "diffuse_texture",
+			material = {
+				"sight",
+				"screen"
+			}
+		},
 		material_parameters = {
 			gfx_reddot = {
 				{
@@ -524,6 +535,28 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 					end
 				}
 			}
+		},
+		visibility = {
+			{
+				condition = function (self, part, npc)
+					return _G.IS_VR and not npc
+				end,
+				objects = {
+					g_glass = false,
+					g_vr_phong = true,
+					g_gfx_specter = false,
+					g_screen = true,
+					g_vr_lens = true,
+					g_gfx = false
+				}
+			}
+		},
+		camera = {
+			a_camera = "a_camera",
+			material = "screen",
+			fov = 13,
+			a_screen = "g_screen",
+			channel = "macrodetail_diffuse_texture"
 		}
 	}
 	self.parts.wpn_fps_upg_o_aimpoint = {
@@ -545,6 +578,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_amcar_uupg_body_upperreciever",
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
+		},
+		texture_switch = {
+			material = "sight",
+			channel = "diffuse_texture"
+		},
+		material_parameters = deep_clone(self.parts.wpn_fps_upg_o_specter.material_parameters),
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
 		}
 	}
 	self.parts.wpn_fps_upg_o_aimpoint_2 = {
@@ -572,6 +616,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_amcar_uupg_body_upperreciever",
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
+		},
+		texture_switch = {
+			material = "sight",
+			channel = "diffuse_texture"
+		},
+		material_parameters = deep_clone(self.parts.wpn_fps_upg_o_specter.material_parameters),
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
 		}
 	}
 	self.parts.wpn_fps_upg_o_docter = {
@@ -597,6 +652,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_amcar_uupg_body_upperreciever",
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
+		},
+		texture_switch = {
+			material = "sight",
+			channel = "diffuse_texture"
+		},
+		material_parameters = deep_clone(self.parts.wpn_fps_upg_o_specter.material_parameters),
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
 		}
 	}
 	self.parts.wpn_fps_upg_o_eotech = {
@@ -623,6 +689,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_amcar_uupg_body_upperreciever",
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
+		},
+		texture_switch = {
+			material = "gfx_reddot",
+			channel = "diffuse_texture"
+		},
+		material_parameters = deep_clone(self.parts.wpn_fps_upg_o_specter.material_parameters),
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
 		}
 	}
 	self.parts.wpn_fps_upg_o_t1micro = {
@@ -649,6 +726,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "restore", function(self)
 			"wpn_fps_amcar_uupg_body_upperreciever",
 			"wpn_fps_ass_m16_os_frontsight",
 			"wpn_fps_ass_scar_o_flipups_up"
+		},
+		texture_switch = {
+			material = "sight",
+			channel = "diffuse_texture"
+		},
+		material_parameters = deep_clone(self.parts.wpn_fps_upg_o_specter.material_parameters),
+		override = {
+			wpn_fps_ass_m14_body_ruger = {
+				third_unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_third_ass_m14_body_ruger_rail",
+				unit = "units/pd2_dlc_atw/weapons/wpn_fps_ass_m14_body_ruger/wpn_fps_ass_m14_body_ruger_rail"
+			}
 		}
 	}
 	self.parts.wpn_upg_o_marksmansight_rear = {
@@ -1646,7 +1734,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m4", "restore", function(self)
 	self.parts.wpn_fps_m4_uupg_b_short_vanilla = deep_clone(self.parts.wpn_fps_m4_uupg_b_short)
 	self.parts.wpn_fps_m4_uupg_b_short_vanilla.stats = nil
 	self.parts.wpn_fps_m4_uupg_b_short_vanilla.pcs = nil
-	self.wpn_fps_ass_m4 = {}
 	self.wpn_fps_ass_m4.optional_types = {
 		"barrel_ext",
 		"gadget",
@@ -1829,7 +1916,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_g18c", "restore", function(self)
 	self.parts.wpn_fps_pis_g18c_m_mag_17rnd.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_m_mag_17rnd"
 	self.parts.wpn_fps_pis_g18c_s_stock.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_s_stock"
 	self.parts.wpn_fps_pis_g18c_g_ergo.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_g_ergo"
-	self.wpn_fps_pis_g18c = {}
 	self.wpn_fps_pis_g18c.unit = "units/payday2/weapons/wpn_fps_pis_g18c/wpn_fps_pis_g18c"
 	self.wpn_fps_pis_g18c.optional_types = {
 		"barrel_ext",
@@ -1889,7 +1975,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_amcar", "restore", function(self)
 	}
 	self.parts.wpn_fps_amcar_uupg_body_upperreciever.third_unit = "units/payday2/weapons/wpn_third_ass_amcar_pts/wpn_third_amcar_uupg_body_upperreciever"
 	self.parts.wpn_fps_amcar_uupg_fg_amcar.third_unit = "units/payday2/weapons/wpn_third_ass_amcar_pts/wpn_third_amcar_uupg_fg_amcar"
-	self.wpn_fps_ass_amcar = {}
 	self.wpn_fps_ass_amcar.unit = "units/payday2/weapons/wpn_fps_ass_amcar/wpn_fps_ass_amcar"
 	self.wpn_fps_ass_amcar.stock_adapter = "wpn_fps_upg_m4_s_adapter"
 	self.wpn_fps_ass_amcar.adds = {
@@ -2072,7 +2157,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m16", "restore", function(self)
 	self.parts.wpn_fps_m16_s_solid_vanilla = deep_clone(self.parts.wpn_fps_m16_s_solid)
 	self.parts.wpn_fps_m16_s_solid_vanilla.stats = nil
 	self.parts.wpn_fps_m16_s_solid_vanilla.pc = nil
-	self.wpn_fps_ass_m16 = {}
 	self.wpn_fps_ass_m16.unit = "units/payday2/weapons/wpn_fps_ass_m16/wpn_fps_ass_m16"
 	self.wpn_fps_ass_m16.stock_adapter = "wpn_fps_upg_m4_s_adapter"
 	self.wpn_fps_ass_m16.optional_types = {
@@ -2204,7 +2288,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_olympic", "restore", function(self
 	self.parts.wpn_fps_smg_olympic_fg_olympic.third_unit = "units/payday2/weapons/wpn_third_smg_olympic_pts/wpn_third_smg_olympic_fg_olympic"
 	self.parts.wpn_fps_smg_olympic_s_short.third_unit = "units/payday2/weapons/wpn_third_smg_olympic_pts/wpn_third_smg_olympic_s_short"
 	self.parts.wpn_fps_smg_olympic_s_adjust.third_unit = "units/payday2/weapons/wpn_third_smg_olympic_pts/wpn_third_smg_olympic_s_adjust"
-	self.wpn_fps_smg_olympic = {}
 	self.wpn_fps_smg_olympic.unit = "units/payday2/weapons/wpn_fps_smg_olympic/wpn_fps_smg_olympic"
 	self.wpn_fps_smg_olympic.optional_types = {
 		"barrel_ext",
@@ -2552,7 +2635,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ak74", "restore", function(self)
 	self.parts.wpn_fps_ass_74_b_standard.third_unit = "units/payday2/weapons/wpn_third_ass_74_pts/wpn_third_ass_74_b_standard"
 	self.parts.wpn_fps_ass_74_body_upperreceiver.third_unit = "units/payday2/weapons/wpn_third_ass_74_pts/wpn_third_ass_74_body_upperreceiver"
 	self.parts.wpn_fps_ass_74_m_standard.third_unit = "units/payday2/weapons/wpn_third_ass_74_pts/wpn_third_ass_74_m_standard"
-	self.wpn_fps_ass_74 = {}
 	self.wpn_fps_ass_74.unit = "units/payday2/weapons/wpn_fps_ass_74/wpn_fps_ass_74"
 	self.wpn_fps_ass_74.stock_adapter = "wpn_upg_ak_s_adapter"
 	self.wpn_fps_ass_74.optional_types = {
@@ -2664,7 +2746,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ak74", "restore", function(self)
 end)
 
 Hooks:PostHook(WeaponFactoryTweakData, "_init_akm", "restore", function(self)
-	self.wpn_fps_ass_akm = {}
 	self.wpn_fps_ass_akm.unit = "units/payday2/weapons/wpn_fps_ass_akm/wpn_fps_ass_akm"
 	self.wpn_fps_ass_akm.stock_adapter = "wpn_upg_ak_s_adapter"
 	self.wpn_fps_ass_akm.optional_types = {
@@ -2827,7 +2908,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_akmsu", "restore", function(self)
 	self.parts.wpn_fps_smg_akmsu_body_lowerreceiver.third_unit = "units/payday2/weapons/wpn_third_upg_ak_reusable/wpn_third_upg_akmsu_body_lowerreceiver"
 	self.parts.wpn_fps_smg_akmsu_fg_rail.third_unit = "units/payday2/weapons/wpn_third_smg_akmsu_pts/wpn_third_smg_akmsu_fg_rail"
 	self.parts.wpn_fps_smg_akmsu_fg_standard.third_unit = "units/payday2/weapons/wpn_third_smg_akmsu_pts/wpn_third_smg_akmsu_fg_standard"
-	self.wpn_fps_smg_akmsu = {}
 	self.wpn_fps_smg_akmsu.unit = "units/payday2/weapons/wpn_fps_smg_akmsu/wpn_fps_smg_akmsu"
 	self.wpn_fps_smg_akmsu.stock_adapter = "wpn_upg_ak_s_adapter"
 	self.wpn_fps_smg_akmsu.optional_types = {
@@ -3003,7 +3083,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_saiga", "restore", function(self)
 	self.parts.wpn_upg_saiga_fg_standard.third_unit = "units/payday2/weapons/wpn_third_shot_saiga_pts/wpn_third_upg_saiga_fg_standard"
 	self.parts.wpn_upg_saiga_fg_lowerrail.third_unit = "units/payday2/weapons/wpn_third_shot_saiga_pts/wpn_third_upg_saiga_fg_lowerrail"
 	self.parts.wpn_upg_saiga_m_20rnd.third_unit = "units/payday2/weapons/wpn_third_shot_saiga_pts/wpn_third_saiga_m_20rnd"
-	self.wpn_fps_shot_saiga = {}
 	self.wpn_fps_shot_saiga.unit = "units/payday2/weapons/wpn_fps_shot_saiga/wpn_fps_shot_saiga"
 	self.wpn_fps_shot_saiga.stock_adapter = "wpn_upg_ak_s_adapter"
 	self.wpn_fps_shot_saiga.optional_types = {
@@ -3209,7 +3288,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ak5", "restore", function(self)
 	self.parts.wpn_fps_ass_ak5_s_ak5a.third_unit = "units/payday2/weapons/wpn_third_ass_ak5_pts/wpn_third_ass_ak5_s_ak5a"
 	self.parts.wpn_fps_ass_ak5_s_ak5b.third_unit = "units/payday2/weapons/wpn_third_ass_ak5_pts/wpn_third_ass_ak5_s_ak5b"
 	self.parts.wpn_fps_ass_ak5_s_ak5c.third_unit = "units/payday2/weapons/wpn_third_ass_ak5_pts/wpn_third_ass_ak5_s_ak5c"
-	self.wpn_fps_ass_ak5 = {}
 	self.wpn_fps_ass_ak5.unit = "units/payday2/weapons/wpn_fps_ass_ak5/wpn_fps_ass_ak5"
 	self.wpn_fps_ass_ak5.optional_types = {
 		"barrel_ext",
@@ -3405,7 +3483,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_aug", "restore", function(self)
 	self.parts.wpn_fps_aug_fg_a3.third_unit = "units/payday2/weapons/wpn_third_ass_aug_pts/wpn_third_ass_aug_fg_a3"
 	self.parts.wpn_fps_aug_m_pmag.third_unit = "units/payday2/weapons/wpn_third_ass_aug_pts/wpn_third_aug_m_pmag"
 	self.parts.wpn_fps_aug_ris_special.third_unit = "units/payday2/weapons/wpn_third_ass_aug_pts/wpn_third_aug_ris_special"
-	self.wpn_fps_ass_aug = {}
 	self.wpn_fps_ass_aug.unit = "units/payday2/weapons/wpn_fps_ass_aug/wpn_fps_ass_aug"
 	self.wpn_fps_ass_aug.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_ass_aug.adds = {
@@ -3663,7 +3740,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_g36", "restore", function(self)
 	self.parts.wpn_fps_ass_g36_s_kv.third_unit = "units/payday2/weapons/wpn_third_ass_g36_pts/wpn_third_upg_g36_s_kv"
 	self.parts.wpn_fps_ass_g36_s_sl8.third_unit = "units/payday2/weapons/wpn_third_ass_g36_pts/wpn_third_upg_g36_s_sl8"
 	self.parts.wpn_fps_ass_g36_s_standard.third_unit = "units/payday2/weapons/wpn_third_ass_g36_pts/wpn_third_upg_g36_s_standard"
-	self.wpn_fps_ass_g36 = {}
 	self.wpn_fps_ass_g36.unit = "units/payday2/weapons/wpn_fps_ass_g36/wpn_fps_ass_g36"
 	self.wpn_fps_ass_g36.optional_types = {
 		"barrel_ext",
@@ -3768,7 +3844,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_p90", "restore", function(self)
 	self.parts.wpn_fps_smg_p90_b_short.third_unit = "units/payday2/weapons/wpn_third_smg_p90_pts/wpn_third_smg_p90_b_short"
 	self.parts.wpn_fps_smg_p90_body_p90.third_unit = "units/payday2/weapons/wpn_third_smg_p90_pts/wpn_third_smg_p90_body_p90"
 	self.parts.wpn_fps_smg_p90_m_std.third_unit = "units/payday2/weapons/wpn_third_smg_p90_pts/wpn_third_smg_p90_m_std"
-	self.wpn_fps_smg_p90 = {}
 	self.wpn_fps_smg_p90.unit = "units/payday2/weapons/wpn_fps_smg_p90/wpn_fps_smg_p90"
 	self.wpn_fps_smg_p90.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_smg_p90.override = {
@@ -3900,7 +3975,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m14", "restore", function(self)
 	self.parts.wpn_fps_ass_m14_body_lower.third_unit = "units/payday2/weapons/wpn_third_ass_m14_pts/wpn_third_ass_m14_body_lower"
 	self.parts.wpn_fps_ass_m14_body_upper.third_unit = "units/payday2/weapons/wpn_third_ass_m14_pts/wpn_third_ass_m14_body_upper"
 	self.parts.wpn_fps_ass_m14_m_standard.third_unit = "units/payday2/weapons/wpn_third_ass_m14_pts/wpn_third_ass_m14_m_standard"
-	self.wpn_fps_ass_m14 = {}
 	self.wpn_fps_ass_m14.unit = "units/payday2/weapons/wpn_fps_ass_m14/wpn_fps_ass_m14"
 	self.wpn_fps_ass_m14.optional_types = {
 		"barrel_ext",
@@ -4027,7 +4101,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mp9", "restore", function(self)
 	self.parts.wpn_fps_smg_mp9_m_short.third_unit = "units/payday2/weapons/wpn_third_smg_mp9_pts/wpn_third_smg_mp9_m_short"
 	self.parts.wpn_fps_smg_mp9_s_fold.third_unit = "units/payday2/weapons/wpn_third_smg_mp9_pts/wpn_third_smg_mp9_s_fold"
 	self.parts.wpn_fps_smg_mp9_s_skel.third_unit = "units/payday2/weapons/wpn_third_smg_mp9_pts/wpn_third_smg_mp9_s_skel"
-	self.wpn_fps_smg_mp9 = {}
 	self.wpn_fps_smg_mp9.unit = "units/payday2/weapons/wpn_fps_smg_mp9/wpn_fps_smg_mp9"
 	self.wpn_fps_smg_mp9.optional_types = {
 		"barrel_ext",
@@ -4251,7 +4324,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_deagle", "restore", function(self)
 	self.parts.wpn_fps_pis_deagle_o_standard_rear.third_unit = "units/payday2/weapons/wpn_third_pis_deagle_pts/wpn_third_pis_deagle_o_standard_rear"
 	self.parts.wpn_fps_pis_deagle_o_standard_front.third_unit = "units/payday2/weapons/wpn_third_pis_deagle_pts/wpn_third_pis_deagle_o_standard_front"
 	self.parts.wpn_fps_pis_deagle_o_standard_front_long.third_unit = "units/payday2/weapons/wpn_third_pis_deagle_pts/wpn_third_pis_deagle_o_standard_front_long"
-	self.wpn_fps_pis_deagle = {}
 	self.wpn_fps_pis_deagle.unit = "units/payday2/weapons/wpn_fps_pis_deagle/wpn_fps_pis_deagle"
 	self.wpn_fps_pis_deagle.animations = {
 		fire = "recoil",
@@ -4540,7 +4612,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mp5", "restore", function(self)
 	self.parts.wpn_fps_smg_mp5_s_adjust.third_unit = "units/payday2/weapons/wpn_third_smg_mp5_pts/wpn_third_smg_mp5_s_adjust"
 	self.parts.wpn_fps_smg_mp5_s_ring.third_unit = "units/payday2/weapons/wpn_third_smg_mp5_pts/wpn_third_smg_mp5_s_ring"
 	self.parts.wpn_fps_smg_mp5_s_solid.third_unit = "units/payday2/weapons/wpn_third_smg_mp5_pts/wpn_third_smg_mp5_s_solid"
-	self.wpn_fps_smg_mp5 = {}
 	self.wpn_fps_smg_mp5.unit = "units/payday2/weapons/wpn_fps_smg_mp5/wpn_fps_smg_mp5"
 	self.wpn_fps_smg_mp5.optional_types = {
 		"barrel_ext",
@@ -4859,7 +4930,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_colt_1911", "restore", function(se
 	self.parts.wpn_fps_pis_1911_m_standard.third_unit = "units/payday2/weapons/wpn_third_pis_1911_pts/wpn_third_pis_1911_m_standard"
 	self.parts.wpn_fps_pis_1911_o_long.third_unit = "units/payday2/weapons/wpn_third_pis_1911_pts/wpn_third_pis_1911_o_long"
 	self.parts.wpn_fps_pis_1911_o_standard.third_unit = "units/payday2/weapons/wpn_third_pis_1911_pts/wpn_third_pis_1911_o_standard"
-	self.wpn_fps_pis_1911 = {}
 	self.wpn_fps_pis_1911.unit = "units/payday2/weapons/wpn_fps_pis_1911/wpn_fps_pis_1911"
 	self.wpn_fps_pis_1911.optional_types = {
 		"barrel_ext",
@@ -5044,7 +5114,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mac10", "restore", function(self)
 	self.parts.wpn_fps_smg_mac10_m_short.third_unit = "units/payday2/weapons/wpn_third_smg_mac10_pts/wpn_third_smg_mac10_m_short"
 	self.parts.wpn_fps_smg_mac10_s_fold.third_unit = "units/payday2/weapons/wpn_third_smg_mac10_pts/wpn_third_smg_mac10_s_fold"
 	self.parts.wpn_fps_smg_mac10_s_skel.third_unit = "units/payday2/weapons/wpn_third_smg_mac10_pts/wpn_third_smg_mac10_s_skel"
-	self.wpn_fps_smg_mac10 = {}
 	self.wpn_fps_smg_mac10.unit = "units/payday2/weapons/wpn_fps_smg_mac10/wpn_fps_smg_mac10"
 	self.wpn_fps_smg_mac10.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_smg_mac10.override = {
@@ -5432,7 +5501,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_r870", "restore", function(self)
 	self.parts.wpn_fps_shot_r870_fg_railed_vanilla = deep_clone(self.parts.wpn_fps_shot_r870_fg_railed)
 	self.parts.wpn_fps_shot_r870_fg_railed_vanilla.stats = nil
 	self.parts.wpn_fps_shot_r870_fg_railed_vanilla.pcs = nil
-	self.wpn_fps_shot_r870 = {}
 	self.wpn_fps_shot_r870.unit = "units/payday2/weapons/wpn_fps_shot_r870/wpn_fps_shot_r870"
 	self.wpn_fps_shot_r870.optional_types = {
 		"barrel_ext",
@@ -5600,7 +5668,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_serbu", "restore", function(self)
 	self.parts.wpn_fps_shot_shorty_m_extended_short.third_unit = "units/payday2/weapons/wpn_third_shot_shorty_pts/wpn_third_shot_shorty_m_extended_short"
 	self.parts.wpn_fps_shot_shorty_s_nostock_short.third_unit = "units/payday2/weapons/wpn_third_shot_shorty_pts/wpn_third_shot_shorty_s_nostock_short"
 	self.parts.wpn_fps_shot_shorty_s_solid_short.third_unit = "units/payday2/weapons/wpn_third_shot_shorty_pts/wpn_third_shot_shorty_s_solid_short"
-	self.wpn_fps_shot_serbu = {}
 	self.wpn_fps_shot_serbu.unit = "units/payday2/weapons/wpn_fps_shot_shorty/wpn_fps_shot_shorty"
 	self.wpn_fps_shot_serbu.optional_types = {
 		"barrel_ext",
@@ -5736,7 +5803,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_g17", "restore", function(self)
 	self.parts.wpn_fps_pis_g17_body_standard.third_unit = "units/payday2/weapons/wpn_third_pis_g17_pts/wpn_third_pis_g17_body_standard"
 	self.parts.wpn_fps_pis_g17_b_standard.third_unit = "units/payday2/weapons/wpn_third_pis_g17_pts/wpn_third_pis_g17_b_standard"
 	self.parts.wpn_fps_pis_g17_m_standard.third_unit = "units/payday2/weapons/wpn_third_pis_g17_pts/wpn_third_pis_g17_m_standard"
-	self.wpn_fps_pis_g17 = {}
 	self.wpn_fps_pis_g17.unit = "units/payday2/weapons/wpn_fps_pis_g17/wpn_fps_pis_g17"
 	self.wpn_fps_pis_g17.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_pis_g17.default_blueprint = {
@@ -5935,7 +6001,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_b92fs", "restore", function(self)
 	self.parts.wpn_fps_pis_beretta_o_std.third_unit = "units/payday2/weapons/wpn_third_pis_b92fs_pts/wpn_third_pis_beretta_o_std"
 	self.parts.wpn_fps_pis_beretta_sl_brigadier.third_unit = "units/payday2/weapons/wpn_third_pis_b92fs_pts/wpn_third_pis_beretta_sl_brigadier"
 	self.parts.wpn_fps_pis_beretta_sl_std.third_unit = "units/payday2/weapons/wpn_third_pis_b92fs_pts/wpn_third_pis_beretta_sl_std"
-	self.wpn_fps_pis_beretta = {}
 	self.wpn_fps_pis_beretta.unit = "units/payday2/weapons/wpn_fps_pis_b92fs/wpn_fps_pis_beretta"
 	self.wpn_fps_pis_beretta.animations = {
 		fire = "recoil",
@@ -6049,7 +6114,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_huntsman", "restore", function(sel
 	self.parts.wpn_fps_shot_huntsman_body_standard.third_unit = "units/payday2/weapons/wpn_third_shot_huntsman_pts/wpn_third_shot_huntsman_body_standard"
 	self.parts.wpn_fps_shot_huntsman_s_long.third_unit = "units/payday2/weapons/wpn_third_shot_huntsman_pts/wpn_third_shot_huntsman_s_long"
 	self.parts.wpn_fps_shot_huntsman_s_short.third_unit = "units/payday2/weapons/wpn_third_shot_huntsman_pts/wpn_third_shot_huntsman_s_short"
-	self.wpn_fps_shot_huntsman = {}
 	self.wpn_fps_shot_huntsman.unit = "units/payday2/weapons/wpn_fps_shot_huntsman/wpn_fps_shot_huntsman"
 	self.wpn_fps_shot_huntsman.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_shot_huntsman.default_blueprint = {
@@ -6224,7 +6288,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_raging_bull", "restore", function(
 	self.parts.wpn_fps_pis_rage_body_standard.third_unit = "units/payday2/weapons/wpn_third_pis_rage_pts/wpn_third_pis_rage_body_standard"
 	self.parts.wpn_fps_pis_rage_g_ergo.third_unit = "units/payday2/weapons/wpn_third_pis_rage_pts/wpn_third_pis_rage_g_ergo"
 	self.parts.wpn_fps_pis_rage_g_standard.third_unit = "units/payday2/weapons/wpn_third_pis_rage_pts/wpn_third_pis_rage_g_standard"
-	self.wpn_fps_pis_rage = {}
 	self.wpn_fps_pis_rage.unit = "units/payday2/weapons/wpn_fps_pis_rage/wpn_fps_pis_rage"
 	self.wpn_fps_pis_rage.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_pis_rage.default_blueprint = {
@@ -6279,7 +6342,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_saw", "restore", function(self)
 			fire_steelsight = "recoil"
 		}
 	}
-	self.wpn_fps_saw = {}
 	self.wpn_fps_saw.unit = "units/payday2/weapons/wpn_fps_saw/wpn_fps_saw"
 	self.wpn_fps_saw.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_saw.default_blueprint = {
@@ -6458,7 +6520,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_usp", "restore", function(self)
 	}
 	self.parts.wpn_fps_pis_usp_co_comp_2.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_co_2"
 	self.parts.wpn_fps_pis_usp_co_comp_1.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_co_1"
-	self.wpn_fps_pis_usp = {}
 	self.wpn_fps_pis_usp.unit = "units/payday2/weapons/wpn_fps_pis_usp/wpn_fps_pis_usp"
 	self.wpn_fps_pis_usp.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_pis_usp.adds = {
@@ -6691,7 +6752,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m45", "restore", function(self)
 	self.parts.wpn_fps_smg_m45_g_ergo.third_unit = "units/pd2_dlc1/weapons/wpn_third_smg_m45_pts/wpn_third_smg_m45_g_ergo"
 	self.parts.wpn_fps_smg_m45_m_extended.third_unit = "units/pd2_dlc1/weapons/wpn_third_smg_m45_pts/wpn_third_smg_m45_m_extended"
 	self.parts.wpn_fps_smg_m45_b_green.third_unit = "units/pd2_dlc1/weapons/wpn_third_smg_m45_pts/wpn_third_smg_m45_b_green"
-	self.wpn_fps_smg_m45 = {}
 	self.wpn_fps_smg_m45.unit = "units/pd2_dlc1/weapons/wpn_fps_smg_m45/wpn_fps_smg_m45"
 	self.wpn_fps_smg_m45.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_smg_m45.adds = {
@@ -6989,7 +7049,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_s552", "restore", function(self)
 	self.parts.wpn_fps_ass_s552_fg_standard_green.third_unit = "units/pd2_dlc1/weapons/wpn_third_ass_s552_pts/wpn_third_ass_s552_fg_standard_green"
 	self.parts.wpn_fps_ass_s552_g_standard_green.third_unit = "units/pd2_dlc1/weapons/wpn_third_ass_s552_pts/wpn_third_ass_s552_g_standard_green"
 	self.parts.wpn_fps_ass_s552_s_standard_green.third_unit = "units/pd2_dlc1/weapons/wpn_third_ass_s552_pts/wpn_third_ass_s552_s_standard_green"
-	self.wpn_fps_ass_s552 = {}
 	self.wpn_fps_ass_s552.unit = "units/pd2_dlc1/weapons/wpn_fps_ass_s552/wpn_fps_ass_s552"
 	self.wpn_fps_ass_s552.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_ass_s552.stock_adapter = "wpn_fps_ass_s552_s_m4"
@@ -7159,7 +7218,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ppk", "restore", function(self)
 	self.parts.wpn_fps_pis_ppk_g_laser.third_unit = "units/pd2_dlc1/weapons/wpn_third_pis_ppk_pts/wpn_third_pis_ppk_g_laser"
 	self.parts.wpn_fps_pis_ppk_g_standard.third_unit = "units/pd2_dlc1/weapons/wpn_third_pis_ppk_pts/wpn_third_pis_ppk_g_standard"
 	self.parts.wpn_fps_pis_ppk_m_standard.third_unit = "units/pd2_dlc1/weapons/wpn_third_pis_ppk_pts/wpn_third_pis_ppk_m_standard"
-	self.wpn_fps_pis_ppk = {}
 	self.wpn_fps_pis_ppk.unit = "units/pd2_dlc1/weapons/wpn_fps_pis_ppk/wpn_fps_pis_ppk"
 	self.wpn_fps_pis_ppk.animations = {
 		fire = "recoil",
@@ -7323,7 +7381,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mp7", "restore", function(self)
 	self.parts.wpn_fps_smg_mp7_body_standard.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_smg_mp7_pts/wpn_third_smg_mp7_body_standard"
 	self.parts.wpn_fps_smg_mp7_s_standard.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_smg_mp7_pts/wpn_third_smg_mp7_s_standard"
 	self.parts.wpn_fps_smg_mp7_s_long.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_smg_mp7_pts/wpn_third_smg_mp7_s_long"
-	self.wpn_fps_smg_mp7 = {}
 	self.wpn_fps_smg_mp7.unit = "units/pd2_dlc_dec5/weapons/wpn_fps_smg_mp7/wpn_fps_smg_mp7"
 	self.wpn_fps_smg_mp7.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_smg_mp7.default_blueprint = {
@@ -7540,10 +7597,8 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_scar", "restore", function(self)
 	self.parts.wpn_fps_ass_scar_s_standard.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_ass_scar_pts/wpn_third_ass_scar_s_standard"
 	self.parts.wpn_fps_ass_scar_o_flipups_down.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_ass_scar_pts/wpn_third_ass_scar_o_flipups_down"
 	self.parts.wpn_fps_ass_scar_o_flipups_up.third_unit = "units/pd2_dlc_dec5/weapons/wpn_third_ass_scar_pts/wpn_third_ass_scar_o_flipups_up"
-	self.wpn_fps_ass_scar = {}
 	self.wpn_fps_ass_scar.unit = "units/pd2_dlc_dec5/weapons/wpn_fps_ass_scar/wpn_fps_ass_scar"
 	self.wpn_fps_ass_scar.optional_types = {"barrel_ext", "gadget"}
-	self.wpn_fps_ass_scar.override = {}
 	self.wpn_fps_ass_scar.adds = {
 		wpn_fps_upg_o_specter = {
 			"wpn_fps_ass_scar_o_flipups_down"
@@ -7874,7 +7929,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_p226", "restore", function(self)
 	}
 	self.parts.wpn_fps_pis_p226_co_comp_2.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_co_2"
 	self.parts.wpn_fps_pis_p226_co_comp_1.third_unit = "units/payday2/weapons/wpn_third_pis_g18c_pts/wpn_third_pis_g18c_co_1"
-	self.wpn_fps_pis_p226 = {}
 	self.wpn_fps_pis_p226.unit = "units/pd2_dlc_dec5/weapons/wpn_fps_pis_p226/wpn_fps_pis_p226"
 	self.wpn_fps_pis_p226.animations = {
 		fire = "recoil",
@@ -8063,7 +8117,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_hk21", "restore", function(self)
 	self.parts.wpn_fps_lmg_hk21_g_standard.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_hk21_pts/wpn_third_lmg_hk21_g_standard"
 	self.parts.wpn_fps_lmg_hk21_m_standard.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_hk21_pts/wpn_third_lmg_hk21_m_standard"
 	self.parts.wpn_fps_lmg_hk21_s_standard.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_hk21_pts/wpn_third_lmg_hk21_s_standard"
-	self.wpn_fps_lmg_hk21 = {}
 	self.wpn_fps_lmg_hk21.unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_hk21/wpn_fps_lmg_hk21"
 	self.wpn_fps_lmg_hk21.optional_types = {"barrel_ext", "gadget"}
 	self.wpn_fps_lmg_hk21.default_blueprint = {
@@ -8233,7 +8286,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m249", "restore", function(self)
 	self.parts.wpn_fps_lmg_m249_s_para.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_m249_pts/wpn_third_lmg_m249_s_para"
 	self.parts.wpn_fps_lmg_m249_s_solid.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_m249_pts/wpn_third_lmg_m249_s_solid"
 	self.parts.wpn_fps_lmg_m249_upper_reciever.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_m249_pts/wpn_third_lmg_m249_upper_reciever"
-	self.wpn_fps_lmg_m249 = {}
 	self.wpn_fps_lmg_m249.unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_m249/wpn_fps_lmg_m249"
 	self.wpn_fps_lmg_m249.stock_adapter = "wpn_fps_lmg_m249_s_modern"
 	self.wpn_fps_lmg_m249.optional_types = {
@@ -8380,7 +8432,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_rpk", "restore", function(self)
 	self.parts.wpn_lmg_rpk_m_drum.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_rpk_pts/wpn_third_lmg_rpk_m_drum"
 	self.parts.wpn_fps_lmg_rpk_s_standard.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_rpk_pts/wpn_third_lmg_rpk_s_standard"
 	self.parts.wpn_fps_lmg_rpk_s_wood.third_unit = "units/pd2_dlc_gage_lmg/weapons/wpn_third_lmg_rpk_pts/wpn_third_lmg_rpk_s_wood"
-	self.wpn_fps_lmg_rpk = {}
 	self.wpn_fps_lmg_rpk.unit = "units/pd2_dlc_gage_lmg/weapons/wpn_fps_lmg_rpk/wpn_fps_lmg_rpk"
 	self.wpn_fps_lmg_rpk.stock_adapter = "wpn_upg_ak_s_adapter"
 	self.wpn_fps_lmg_rpk.optional_types = {
