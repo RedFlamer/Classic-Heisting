@@ -37,9 +37,15 @@ Hooks:PostHook(CharacterTweakData, "init", "restore_init", function(self, tweak_
 	self.city_swat.HEALTH_INIT = 13
 	self.city_swat.headshot_dmg_mul = self.city_swat.HEALTH_INIT / 4
 	self.city_swat.surrender = presets.surrender.hard
+
+	self.sniper.no_move_and_shoot = false
+	self.sniper.move_and_shoot_cooldown = 0
 	
 	self.gangster.HEALTH_INIT = 4
 	self.gangster.headshot_dmg_mul = self.gangster.HEALTH_INIT / 1
+
+	self.mobster.HEALTH_INIT = 4
+	self.mobster.headshot_dmg_mul = self.gangster.HEALTH_INIT / 1
 	
 	self.tank.weapon.is_shotgun_mag.FALLOFF = {
 		{

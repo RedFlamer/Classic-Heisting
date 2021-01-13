@@ -1,3 +1,4 @@
+-- TODO: Stop being a lazy cunt and properly fix this crash
 function PlayerStandard:_get_max_walk_speed(t, force_run)
 	local speed_tweak = self._tweak_data.movement.speed
 	local movement_speed = speed_tweak.STANDARD_MAX

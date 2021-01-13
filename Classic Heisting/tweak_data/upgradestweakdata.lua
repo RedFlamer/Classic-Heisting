@@ -2087,3 +2087,32 @@ function UpgradesTweakData:init(tweak_data)
 		}
 	}
 end
+
+function UpgradesTweakData:_melee_weapon_definitions()
+	self.definitions.weapon = {
+		category = "melee_weapon"
+	}
+	self.definitions.fists = {
+		category = "melee_weapon"
+	}
+	self.definitions.kabar = {
+		dlc = "gage_pack_lmg",
+		category = "melee_weapon"
+	}
+	self.definitions.rambo = {
+		dlc = "gage_pack_lmg",
+		category = "melee_weapon"
+	}
+	self.definitions.gerber = {
+		dlc = "gage_pack_lmg",
+		category = "melee_weapon"
+	}
+	self.definitions.kampfmesser = {
+		dlc = "gage_pack_lmg",
+		category = "melee_weapon"
+	}
+	self.definitions.brass_knuckles = {
+		dlc = "pd2_clan",
+		category = "melee_weapon"
+	}
+end
