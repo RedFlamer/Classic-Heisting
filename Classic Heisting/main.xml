@@ -1,4 +1,5 @@
 <mod name="Classic Heisting">
+	<AssetUpdates id="30628" version="1" provider="modworkshop"/>
     <AddFiles directory="assets">
 		<texture path="guis/textures/pd2/skilltree/icons_atlas" force="true"/>
     </AddFiles>

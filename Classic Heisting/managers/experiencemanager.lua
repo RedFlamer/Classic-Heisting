@@ -56,37 +56,10 @@ function ExperienceManager:get_xp_by_params(params)
 	level_limit_dissect = level_limit_dissect + (static_stage_experience or managers.experience:get_stage_xp_by_stars(job_stars))
 
 	if success then
-		if job_id == "firestarter" then mission_xp_dissect = 8100 or self:mission_xp() 
-		elseif job_id == "firestarter_prof" then mission_xp_dissect = 11513 or self:mission_xp() 
-		elseif job_id == "alex" then mission_xp_dissect = 8100 or self:mission_xp() 
-		elseif job_id == "alex_prof" then mission_xp_dissect = 11513 or self:mission_xp()
-		elseif job_id == "welcome_to_the_jungle_prof" then mission_xp_dissect = 5873 or self:mission_xp() 
-		elseif job_id == "framing_frame" then mission_xp_dissect = 8100 or self:mission_xp() 
-		elseif job_id == "framing_frame_prof" then mission_xp_dissect = 12000 or self:mission_xp() 
-		elseif job_id == "watchdogs" then mission_xp_dissect = 5050 or self:mission_xp() 
-		elseif job_id == "watchdogs_night" then mission_xp_dissect = 5050 or self:mission_xp() 
-		elseif job_id == "watchdogs_prof" then mission_xp_dissect = 5990 or self:mission_xp() 
-		elseif job_id == "watchdogs_wrapper_prof" then mission_xp_dissect = 5990 or self:mission_xp() 
-		elseif job_id == "nightclub" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "ukrainian_job_prof" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "jewelry_store" then mission_xp_dissect = 950 or self:mission_xp() 
-		elseif job_id == "four_stores" then mission_xp_dissect = 950 or self:mission_xp() 
-		elseif job_id == "mallcrasher" then mission_xp_dissect = 1250 or self:mission_xp() 
-		elseif job_id == "branchbank_prof" then mission_xp_dissect = 2350 or self:mission_xp() 
-		elseif job_id == "branchbank_deposit" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "branchbank_cash" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "branchbank_gold_prof" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "arm_cro" then mission_xp_dissect = 2350 or self:mission_xp() 
-		elseif job_id == "arm_und" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "arm_bri" then mission_xp_dissect = 1800 or self:mission_xp() 
-		elseif job_id == "arm_hcm" then mission_xp_dissect = 1250 or self:mission_xp() 
-		elseif job_id == "arm_par" then mission_xp_dissect = 1250 or self:mission_xp() 
-		elseif job_id == "arm_for" then mission_xp_dissect = 6000 or self:mission_xp() 
-		elseif job_id == "family" then mission_xp_dissect = 2350 or self:mission_xp() 
-		end
+		mission_xp_dissect = params.mission_xp or self:mission_xp()
 	end
 
-	base_xp = mission_xp_dissect
+	base_xp = (job_xp_dissect + stage_xp_dissect + mission_xp_dissect) /2
 	pro_job_xp_dissect = math.round(base_xp * pro_job_multiplier - base_xp)
 	base_xp = base_xp + pro_job_xp_dissect
 	days_dissect = math.round(base_xp * days_multiplier - base_xp)
