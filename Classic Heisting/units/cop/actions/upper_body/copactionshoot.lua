@@ -62,27 +62,21 @@ function CopActionShoot:_get_unit_shoot_pos(t, pos, dis, w_tweak, falloff, i_ran
 
 	hit_chance = hit_chance * self._unit:character_damage():accuracy_multiplier()
 
-	if self:_pseudorandom() < hit_chance then
+	if hit_chance > math.random() then
 		mvec3_set(shoot_hist.m_last_pos, pos)
 	else
 		local enemy_vec = temp_vec2
-
 		mvec3_set(enemy_vec, pos)
-		mvec3_sub(enemy_vec, self._ext_movement:m_head_pos())
-
+		mvec3_sub(enemy_vec, self._common_data.pos)
 		local error_vec = Vector3()
-
 		mvec3_cross(error_vec, enemy_vec, math.UP)
-		mrot_axis_angle(temp_rot1, enemy_vec, math.random(360))
+		mrot_axis_angle(temp_rot1, enemy_vec, shoot_hist.focus_error_roll)
 		mvec3_rot(error_vec, temp_rot1)
-
 		local miss_min_dis = shooting_local_player and 31 or 150
-		local error_vec_len = miss_min_dis + w_tweak.spread + w_tweak.miss_dis * math.random() * (1 - focus_prog)
-
+		local error_vec_len = miss_min_dis + w_tweak.spread + w_tweak.miss_dis * (1 - focus_prog)
 		mvec3_set_l(error_vec, error_vec_len)
 		mvec3_add(error_vec, pos)
 		mvec3_set(shoot_hist.m_last_pos, error_vec)
-
 		return error_vec
 	end
 end

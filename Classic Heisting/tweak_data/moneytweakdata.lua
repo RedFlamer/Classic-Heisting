@@ -54,4 +54,40 @@ Hooks:PostHook(MoneyTweakData, "init", "restore_init", function(self)
 	self.bag_values.old_wine = 1000
 	self.bag_values.shells = 2100
 	self.bag_values.turret = 10000
+	self.buy_premium_multiplier = {
+		easy = 0.5,
+		normal = 0.75,
+		hard = 1.25,
+		overkill = 1.5,
+		overkill_145 = 2,
+		easy_wish = 2,
+		overkill_290 = 2.5,
+		sm_wish = 2.5
+	}
+	self.buy_premium_static_fee = {
+		easy = 100000,
+		normal = 100000,
+		hard = 150000,
+		overkill = 200000,
+		overkill_145 = 300000,
+		easy_wish = 300000,
+		overkill_290 = 360000,
+		sm_wish = 360000
+	}
+	local smallest_cashout = (self.stage_completion[1] + self.job_completion[1]) * self.offshore_rate
+	local biggest_mask_cost = self.biggest_cashout * 40
+	local biggest_mask_cost_deinfamous = math.round(biggest_mask_cost / self.global_value_multipliers.infamous)
+	local biggest_mask_part_cost = math.round(smallest_cashout * 20)
+	local smallest_mask_part_cost = math.round(smallest_cashout * 1.9)
+	local biggest_weapon_cost = math.round(self.biggest_cashout * 1.15)
+	local smallest_weapon_cost = math.round(smallest_cashout * 3)
+	local biggest_weapon_mod_cost = math.round(self.biggest_cashout * 0.5)
+	local smallest_weapon_mod_cost = math.round(smallest_cashout * 3)
+	self.weapon_cost = self._create_value_table(smallest_weapon_cost, biggest_weapon_cost, 40, true, 1.1)
+	self.modify_weapon_cost = self._create_value_table(smallest_weapon_mod_cost, biggest_weapon_mod_cost, 10, true, 1.2)
+	self.remove_weapon_mod_cost_multiplier = self._create_value_table(1, 1, 10, true, 1)
+	self.masks.mask_value = self._create_value_table(smallest_mask_part_cost, smallest_mask_part_cost * 2, 10, true, 2)
+	self.masks.material_value = self._create_value_table(smallest_mask_part_cost * 0.5, biggest_mask_part_cost, 10, true, 1.2)
+	self.masks.pattern_value = self._create_value_table(smallest_mask_part_cost * 0.4, biggest_mask_part_cost, 10, true, 1.1)
+	self.masks.color_value = self._create_value_table(smallest_mask_part_cost * 0.3, biggest_mask_part_cost, 10, true, 1)
 end)

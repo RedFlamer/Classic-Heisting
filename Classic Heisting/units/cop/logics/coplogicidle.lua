@@ -15,7 +15,7 @@ function CopLogicIdle._chk_relocate(data)
 		if data.objective.relocated_to and mvector3.equal(data.objective.relocated_to, follow_unit_pos) then
 			return
 		end
-		if mvector3.distance(follow_unit:movement():m_pos(), follow_unit_pos) > data.objective.distance then
+		if data.objective.distance and data.objective.distance < mvector3.distance(data.m_pos, follow_unit_pos) then
 			relocate = true
 		end
 		if not relocate then

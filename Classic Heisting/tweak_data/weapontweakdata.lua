@@ -539,6 +539,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.new_m4.NR_CLIPS_MAX = math.round(total_damage_primary / 2 / self.new_m4.CLIP_AMMO_MAX)
 	self.new_m4.AMMO_MAX = self.new_m4.CLIP_AMMO_MAX * self.new_m4.NR_CLIPS_MAX
 	self.new_m4.AMMO_PICKUP = self:_pickup_chance(self.new_m4.AMMO_MAX, 2)
+	self.new_m4.fire_mode_data.fire_rate = 0.1
 	self.new_m4.spread.standing = 3.5
 	self.new_m4.spread.crouching = self.new_m4.spread.standing
 	self.new_m4.spread.steelsight = 1
@@ -555,6 +556,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.glock_17.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.15 / self.glock_17.CLIP_AMMO_MAX)
 	self.glock_17.AMMO_MAX = self.glock_17.CLIP_AMMO_MAX * self.glock_17.NR_CLIPS_MAX	
 	self.glock_17.AMMO_PICKUP = self:_pickup_chance(self.glock_17.AMMO_MAX, 1)
+	self.glock_17.fire_mode_data.fire_rate = 0.12
 	self.glock_17.spread.standing = self.new_m4.spread.standing * 0.75
 	self.glock_17.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.glock_17.spread.steelsight = self.new_m4.spread.steelsight
@@ -571,6 +573,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.mp9.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.15 / self.mp9.CLIP_AMMO_MAX)
 	self.mp9.AMMO_MAX = self.mp9.CLIP_AMMO_MAX * self.mp9.NR_CLIPS_MAX	
 	self.mp9.AMMO_PICKUP = self:_pickup_chance(self.mp9.AMMO_MAX, 1)
+	self.mp9.fire_mode_data.fire_rate = 0.063
 	self.mp9.spread.standing = self.new_m4.spread.standing * 0.75
 	self.mp9.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.mp9.spread.steelsight = self.new_m4.spread.steelsight
@@ -580,8 +583,9 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	
 	self.r870.CLIP_AMMO_MAX = 6
 	self.r870.NR_CLIPS_MAX = math.round(total_damage_primary / 6.5 / self.r870.CLIP_AMMO_MAX)
-	self.r870.AMMO_MAX = self.r870.CLIP_AMMO_MAX * self.r870.NR_CLIPS_MAX	
-	self.r870.AMMO_PICKUP = self:_pickup_chance(self.r870.AMMO_MAX, 2)	
+	self.r870.AMMO_MAX = self.r870.CLIP_AMMO_MAX * self.r870.NR_CLIPS_MAX
+	self.r870.AMMO_PICKUP = self:_pickup_chance(self.r870.AMMO_MAX, 2)
+	self.r870.fire_mode_data.fire_rate = 0.575
 	self.r870.spread.standing = self.new_m4.spread.standing * 1
 	self.r870.spread.crouching = self.new_m4.spread.standing * 1
 	self.r870.spread.steelsight = self.new_m4.spread.standing * 0.8
@@ -600,11 +604,12 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.glock_18c.timers.reload_not_empty = 1.47
 	self.glock_18c.timers.reload_empty = 2.12
 	self.glock_18c.timers.unequip = 0.55
-	self.glock_18c.timers.equip = 0.55	
+	self.glock_18c.timers.equip = 0.55
 	self.glock_18c.CLIP_AMMO_MAX = 20
 	self.glock_18c.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.15 / self.glock_18c.CLIP_AMMO_MAX)
 	self.glock_18c.AMMO_MAX = self.glock_18c.CLIP_AMMO_MAX * self.glock_18c.NR_CLIPS_MAX
-	self.glock_18c.AMMO_PICKUP = self:_pickup_chance(self.glock_18c.AMMO_MAX, 1)	
+	self.glock_18c.AMMO_PICKUP = self:_pickup_chance(self.glock_18c.AMMO_MAX, 1)
+	self.glock_18c.fire_mode_data.fire_rate = 0.066
 	self.glock_18c.spread.standing = self.new_m4.spread.standing * 0.75
 	self.glock_18c.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.glock_18c.spread.steelsight = self.new_m4.spread.steelsight
@@ -620,7 +625,8 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.amcar.CLIP_AMMO_MAX = 20
 	self.amcar.NR_CLIPS_MAX = math.round(total_damage_primary / 1.6 / self.amcar.CLIP_AMMO_MAX)
 	self.amcar.AMMO_MAX = self.amcar.CLIP_AMMO_MAX * self.amcar.NR_CLIPS_MAX
-	self.amcar.AMMO_PICKUP = self:_pickup_chance(self.amcar.AMMO_MAX, 2)	
+	self.amcar.AMMO_PICKUP = self:_pickup_chance(self.amcar.AMMO_MAX, 2)
+	self.amcar.fire_mode_data.fire_rate = 0.11
 	self.amcar.spread.standing = self.new_m4.spread.standing
 	self.amcar.spread.crouching = self.new_m4.spread.standing
 	self.amcar.spread.steelsight = self.new_m4.spread.steelsight
@@ -637,6 +643,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.m16.NR_CLIPS_MAX = math.round(total_damage_primary / 3 / self.m16.CLIP_AMMO_MAX)
 	self.m16.AMMO_MAX = self.m16.CLIP_AMMO_MAX * self.m16.NR_CLIPS_MAX
 	self.m16.AMMO_PICKUP = self:_pickup_chance(self.m16.AMMO_MAX, 2)
+	self.m16.fire_mode_data.fire_rate = 0.07
 	self.m16.spread.standing = self.new_m4.spread.standing
 	self.m16.spread.crouching = self.new_m4.spread.standing
 	self.m16.spread.steelsight = self.new_m4.spread.steelsight
@@ -653,6 +660,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.olympic.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.6 / self.olympic.CLIP_AMMO_MAX)
 	self.olympic.AMMO_MAX = self.olympic.CLIP_AMMO_MAX * self.olympic.NR_CLIPS_MAX
 	self.olympic.AMMO_PICKUP = self:_pickup_chance(self.olympic.AMMO_MAX, 1)
+	self.olympic.fire_mode_data.fire_rate = 0.088
 	self.olympic.spread.standing = self.new_m4.spread.standing * 0.8
 	self.olympic.spread.crouching = self.new_m4.spread.standing * 0.8
 	self.olympic.spread.steelsight = self.new_m4.spread.steelsight
@@ -669,6 +677,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.ak74.NR_CLIPS_MAX = math.round(total_damage_primary / 2.5 / self.ak74.CLIP_AMMO_MAX)
 	self.ak74.AMMO_MAX = self.ak74.CLIP_AMMO_MAX * self.ak74.NR_CLIPS_MAX
 	self.ak74.AMMO_PICKUP = self:_pickup_chance(self.ak74.AMMO_MAX, 2)
+	self.ak74.fire_mode_data.fire_rate = 0.092
 	self.ak74.spread.standing = self.new_m4.spread.standing
 	self.ak74.spread.crouching = self.new_m4.spread.standing
 	self.ak74.spread.steelsight = self.new_m4.spread.steelsight
@@ -685,6 +694,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.akm.NR_CLIPS_MAX = math.round(total_damage_primary / 4 / self.akm.CLIP_AMMO_MAX)
 	self.akm.AMMO_MAX = self.akm.CLIP_AMMO_MAX * self.akm.NR_CLIPS_MAX
 	self.akm.AMMO_PICKUP = self:_pickup_chance(self.akm.AMMO_MAX, 2)
+	self.akm.fire_mode_data.fire_rate = 0.107
 	self.akm.spread.standing = self.new_m4.spread.standing
 	self.akm.spread.crouching = self.new_m4.spread.standing
 	self.akm.spread.steelsight = self.new_m4.spread.steelsight
@@ -701,6 +711,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.akmsu.NR_CLIPS_MAX = math.round(total_damage_secondary / 2.75 / self.akmsu.CLIP_AMMO_MAX)
 	self.akmsu.AMMO_MAX = self.akmsu.CLIP_AMMO_MAX * self.akmsu.NR_CLIPS_MAX
 	self.akmsu.AMMO_PICKUP = self:_pickup_chance(self.akmsu.AMMO_MAX, 1)
+	self.akmsu.fire_mode_data.fire_rate = 0.073
 	self.akmsu.spread.standing = self.new_m4.spread.standing
 	self.akmsu.spread.crouching = self.new_m4.spread.standing
 	self.akmsu.spread.steelsight = self.new_m4.spread.steelsight
@@ -717,6 +728,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.saiga.NR_CLIPS_MAX = math.round(total_damage_primary / 4.5 / self.saiga.CLIP_AMMO_MAX)
 	self.saiga.AMMO_MAX = self.saiga.CLIP_AMMO_MAX * self.saiga.NR_CLIPS_MAX
 	self.saiga.AMMO_PICKUP = self:_pickup_chance(self.saiga.AMMO_MAX, 2)
+	self.saiga.fire_mode_data.fire_rate = 0.18
 	self.saiga.spread.standing = self.r870.spread.standing
 	self.saiga.spread.crouching = self.r870.spread.crouching
 	self.saiga.spread.steelsight = self.r870.spread.steelsight
@@ -733,6 +745,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.ak5.NR_CLIPS_MAX = math.round(total_damage_primary / 2 / self.ak5.CLIP_AMMO_MAX)
 	self.ak5.AMMO_MAX = self.ak5.CLIP_AMMO_MAX * self.ak5.NR_CLIPS_MAX
 	self.ak5.AMMO_PICKUP = self:_pickup_chance(self.ak5.AMMO_MAX, 2)
+	self.ak5.fire_mode_data.fire_rate = 0.085
 	self.ak5.spread.standing = self.new_m4.spread.standing
 	self.ak5.spread.crouching = self.new_m4.spread.standing
 	self.ak5.spread.steelsight = self.new_m4.spread.steelsight
@@ -749,6 +762,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.aug.NR_CLIPS_MAX = math.round(total_damage_primary / 2.25 / self.aug.CLIP_AMMO_MAX)
 	self.aug.AMMO_MAX = self.aug.CLIP_AMMO_MAX * self.aug.NR_CLIPS_MAX
 	self.aug.AMMO_PICKUP = self:_pickup_chance(self.aug.AMMO_MAX, 2)
+	self.aug.fire_mode_data.fire_rate = 0.08
 	self.aug.spread.standing = self.new_m4.spread.standing * 2.5
 	self.aug.spread.crouching = self.new_m4.spread.standing * 2.5
 	self.aug.spread.steelsight = self.new_m4.spread.steelsight
@@ -765,6 +779,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.g36.NR_CLIPS_MAX = math.round(total_damage_primary / 1.75 / self.g36.CLIP_AMMO_MAX)
 	self.g36.AMMO_MAX = self.g36.CLIP_AMMO_MAX * self.g36.NR_CLIPS_MAX
 	self.g36.AMMO_PICKUP = self:_pickup_chance(self.g36.AMMO_MAX, 2)
+	self.g36.fire_mode_data.fire_rate = 0.085
 	self.g36.spread.standing = self.new_m4.spread.standing * 0.8
 	self.g36.spread.crouching = self.new_m4.spread.standing * 0.8
 	self.g36.spread.steelsight = self.new_m4.spread.steelsight
@@ -781,6 +796,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.p90.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.45 / self.p90.CLIP_AMMO_MAX)
 	self.p90.AMMO_MAX = self.p90.CLIP_AMMO_MAX * self.p90.NR_CLIPS_MAX
 	self.p90.AMMO_PICKUP = self:_pickup_chance(self.p90.AMMO_MAX, 1)
+	self.p90.fire_mode_data.fire_rate = 0.066
 	self.p90.spread.standing = self.new_m4.spread.standing * 1.35
 	self.p90.spread.crouching = self.new_m4.spread.standing * 1.35
 	self.p90.spread.steelsight = self.new_m4.spread.steelsight
@@ -797,6 +813,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.new_m14.NR_CLIPS_MAX = math.round(total_damage_primary / 8 / self.new_m14.CLIP_AMMO_MAX)
 	self.new_m14.AMMO_MAX = self.new_m14.CLIP_AMMO_MAX * self.new_m14.NR_CLIPS_MAX
 	self.new_m14.AMMO_PICKUP = self:_pickup_chance(self.new_m14.AMMO_MAX, 2)
+	self.new_m14.fire_mode_data.fire_rate = 0.085
 	self.new_m14.spread.standing = self.new_m4.spread.standing * 2
 	self.new_m14.spread.crouching = self.new_m4.spread.standing * 2
 	self.new_m14.spread.steelsight = self.new_m4.spread.steelsight
@@ -813,6 +830,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.deagle.NR_CLIPS_MAX = math.round(total_damage_secondary / 4.5 / self.deagle.CLIP_AMMO_MAX)
 	self.deagle.AMMO_MAX = self.deagle.CLIP_AMMO_MAX * self.deagle.NR_CLIPS_MAX
 	self.deagle.AMMO_PICKUP = self:_pickup_chance(self.deagle.AMMO_MAX, 1)
+	self.deagle.fire_mode_data.fire_rate = 0.15
 	self.deagle.spread.standing = self.new_m4.spread.standing
 	self.deagle.spread.crouching = self.new_m4.spread.standing
 	self.deagle.spread.steelsight = self.new_m4.spread.steelsight
@@ -829,6 +847,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.new_mp5.NR_CLIPS_MAX = math.round(total_damage_secondary / 1 / self.new_mp5.CLIP_AMMO_MAX)
 	self.new_mp5.AMMO_MAX = self.new_mp5.CLIP_AMMO_MAX * self.new_mp5.NR_CLIPS_MAX
 	self.new_mp5.AMMO_PICKUP = self:_pickup_chance(self.new_mp5.AMMO_MAX, 1)
+	self.new_mp5.fire_mode_data.fire_rate = 0.08
 	self.new_mp5.spread.standing = self.new_m4.spread.standing
 	self.new_mp5.spread.crouching = self.new_m4.spread.standing
 	self.new_mp5.spread.steelsight = self.new_m4.spread.steelsight
@@ -845,6 +864,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.colt_1911.NR_CLIPS_MAX = math.round(total_damage_secondary / 2.5 / self.colt_1911.CLIP_AMMO_MAX)
 	self.colt_1911.AMMO_MAX = self.colt_1911.CLIP_AMMO_MAX * self.colt_1911.NR_CLIPS_MAX
 	self.colt_1911.AMMO_PICKUP = self:_pickup_chance(self.colt_1911.AMMO_MAX, 1)
+	self.colt_1911.fire_mode_data.fire_rate = 0.12
 	self.colt_1911.spread.standing = self.new_m4.spread.standing * 0.75
 	self.colt_1911.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.colt_1911.spread.steelsight = self.new_m4.spread.steelsight
@@ -861,6 +881,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.mac10.NR_CLIPS_MAX = math.round(total_damage_secondary / 2.2 / self.mac10.CLIP_AMMO_MAX)
 	self.mac10.AMMO_MAX = self.mac10.CLIP_AMMO_MAX * self.mac10.NR_CLIPS_MAX
 	self.mac10.AMMO_PICKUP = self:_pickup_chance(self.mac10.AMMO_MAX, 1)
+	self.mac10.fire_mode_data.fire_rate = 0.06
 	self.mac10.spread.standing = self.new_m4.spread.standing * 0.75
 	self.mac10.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.mac10.spread.steelsight = self.new_m4.spread.steelsight
@@ -875,6 +896,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.serbu.NR_CLIPS_MAX = math.round(total_damage_secondary / 5.5 / self.serbu.CLIP_AMMO_MAX)
 	self.serbu.AMMO_MAX = self.serbu.CLIP_AMMO_MAX * self.serbu.NR_CLIPS_MAX
 	self.serbu.AMMO_PICKUP = self:_pickup_chance(self.serbu.AMMO_MAX, 1)
+	self.serbu.fire_mode_data.fire_rate = 0.375
 	self.serbu.spread.standing = self.r870.spread.standing
 	self.serbu.spread.crouching = self.r870.spread.crouching
 	self.serbu.spread.steelsight = self.r870.spread.steelsight
@@ -891,6 +913,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.huntsman.NR_CLIPS_MAX = math.round(total_damage_primary / 12 / self.huntsman.CLIP_AMMO_MAX)
 	self.huntsman.AMMO_MAX = self.huntsman.CLIP_AMMO_MAX * self.huntsman.NR_CLIPS_MAX
 	self.huntsman.AMMO_PICKUP = self:_pickup_chance(self.huntsman.AMMO_MAX, 1)
+	self.huntsman.fire_mode_data.fire_rate = 0.12
 	self.huntsman.spread.standing = self.r870.spread.standing
 	self.huntsman.spread.crouching = self.r870.spread.crouching
 	self.huntsman.spread.steelsight = self.r870.spread.steelsight
@@ -907,6 +930,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.b92fs.NR_CLIPS_MAX = math.round(total_damage_secondary / 1 / self.b92fs.CLIP_AMMO_MAX)
 	self.b92fs.AMMO_MAX = self.b92fs.CLIP_AMMO_MAX * self.b92fs.NR_CLIPS_MAX
 	self.b92fs.AMMO_PICKUP = self:_pickup_chance(self.b92fs.AMMO_MAX, 1)
+	self.b92fs.fire_mode_data.fire_rate = 0.09
 	self.b92fs.spread.standing = self.new_m4.spread.standing * 0.5
 	self.b92fs.spread.crouching = self.new_m4.spread.standing * 0.5
 	self.b92fs.spread.steelsight = self.new_m4.spread.steelsight
@@ -923,6 +947,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.new_raging_bull.NR_CLIPS_MAX = math.round(total_damage_secondary / 4.7 / self.new_raging_bull.CLIP_AMMO_MAX)
 	self.new_raging_bull.AMMO_MAX = self.new_raging_bull.CLIP_AMMO_MAX * self.new_raging_bull.NR_CLIPS_MAX
 	self.new_raging_bull.AMMO_PICKUP = self:_pickup_chance(self.new_raging_bull.AMMO_MAX, 1)
+	self.new_raging_bull.fire_mode_data.fire_rate = 0.21
 	self.new_raging_bull.spread.standing = self.new_m4.spread.standing * 0.75
 	self.new_raging_bull.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.new_raging_bull.spread.steelsight = self.new_m4.spread.steelsight
@@ -939,6 +964,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.saw.NR_CLIPS_MAX = 2
 	self.saw.AMMO_MAX = self.saw.CLIP_AMMO_MAX * self.saw.NR_CLIPS_MAX
 	self.saw.AMMO_PICKUP = {0, 0}
+	self.saw.fire_mode_data.fire_rate = 0.15
 	self.saw.spread.standing = 1
 	self.saw.spread.crouching = 0.71
 	self.saw.spread.steelsight = 0.48
@@ -973,6 +999,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.usp.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.15 / self.usp.CLIP_AMMO_MAX)
 	self.usp.AMMO_MAX = self.usp.CLIP_AMMO_MAX * self.usp.NR_CLIPS_MAX
 	self.usp.AMMO_PICKUP = self:_pickup_chance(self.usp.AMMO_MAX, 1)
+	self.usp.fire_mode_data.fire_rate = 0.08
 	self.usp.spread.standing = self.new_m4.spread.standing * 0.75
 	self.usp.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.usp.spread.steelsight = self.new_m4.spread.steelsight
@@ -989,6 +1016,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.m45.NR_CLIPS_MAX = math.round(total_damage_secondary / 2.2 / self.m45.CLIP_AMMO_MAX)
 	self.m45.AMMO_MAX = self.m45.CLIP_AMMO_MAX * self.m45.NR_CLIPS_MAX
 	self.m45.AMMO_PICKUP = self:_pickup_chance(self.m45.AMMO_MAX, 1)
+	self.m45.fire_mode_data.fire_rate = 0.1
 	self.m45.spread.standing = self.new_m4.spread.standing * 0.75
 	self.m45.spread.crouching = self.new_m4.spread.standing * 0.75
 	self.m45.spread.steelsight = self.new_m4.spread.steelsight
@@ -1005,6 +1033,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.s552.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.1 / self.s552.CLIP_AMMO_MAX)
 	self.s552.AMMO_MAX = self.s552.CLIP_AMMO_MAX * self.s552.NR_CLIPS_MAX
 	self.s552.AMMO_PICKUP = self:_pickup_chance(self.s552.AMMO_MAX, 2)
+	self.s552.fire_mode_data.fire_rate = 0.084
 	self.s552.spread.standing = self.new_m4.spread.standing * 0.8
 	self.s552.spread.crouching = self.new_m4.spread.standing * 0.8
 	self.s552.spread.steelsight = self.new_m4.spread.steelsight
@@ -1021,6 +1050,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.ppk.NR_CLIPS_MAX = math.round(total_damage_secondary / 1 / self.ppk.CLIP_AMMO_MAX)
 	self.ppk.AMMO_MAX = self.ppk.CLIP_AMMO_MAX * self.ppk.NR_CLIPS_MAX
 	self.ppk.AMMO_PICKUP = self:_pickup_chance(self.ppk.AMMO_MAX, 1)
+	self.ppk.fire_mode_data.fire_rate = 0.09
 	self.ppk.spread.standing = self.new_m4.spread.standing * 0.5
 	self.ppk.spread.crouching = self.new_m4.spread.standing * 0.5
 	self.ppk.spread.steelsight = self.new_m4.spread.steelsight
@@ -1037,6 +1067,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.mp7.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.8 / self.mp7.CLIP_AMMO_MAX)
 	self.mp7.AMMO_MAX = self.mp7.CLIP_AMMO_MAX * self.mp7.NR_CLIPS_MAX
 	self.mp7.AMMO_PICKUP = self:_pickup_chance(self.mp7.AMMO_MAX, 1)
+	self.mp7.fire_mode_data.fire_rate = 0.063
 	self.mp7.spread.standing = self.new_m4.spread.standing * 0.8
 	self.mp7.spread.crouching = self.new_m4.spread.standing * 0.8
 	self.mp7.spread.steelsight = self.new_m4.spread.steelsight
@@ -1053,6 +1084,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.scar.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.7 / self.scar.CLIP_AMMO_MAX)
 	self.scar.AMMO_MAX = self.scar.CLIP_AMMO_MAX * self.scar.NR_CLIPS_MAX
 	self.scar.AMMO_PICKUP = self:_pickup_chance(self.scar.AMMO_MAX, 2)
+	self.scar.fire_mode_data.fire_rate = 0.098
 	self.scar.spread.standing = self.new_m4.spread.standing * 0.6
 	self.scar.spread.crouching = self.new_m4.spread.standing * 0.7
 	self.scar.spread.steelsight = self.new_m4.spread.steelsight
@@ -1069,6 +1101,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.p226.NR_CLIPS_MAX = math.round(total_damage_secondary / 1.8 / self.p226.CLIP_AMMO_MAX)
 	self.p226.AMMO_MAX = self.p226.CLIP_AMMO_MAX * self.p226.NR_CLIPS_MAX
 	self.p226.AMMO_PICKUP = self:_pickup_chance(self.p226.AMMO_MAX, 1)
+	self.p226.fire_mode_data.fire_rate = 0.09
 	self.p226.spread.standing = self.new_m4.spread.standing * 0.3
 	self.p226.spread.crouching = self.new_m4.spread.standing * 0.3
 	self.p226.spread.steelsight = self.new_m4.spread.steelsight
@@ -1085,6 +1118,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.hk21.NR_CLIPS_MAX = 2
 	self.hk21.AMMO_MAX = self.hk21.CLIP_AMMO_MAX * self.hk21.NR_CLIPS_MAX
 	self.hk21.AMMO_PICKUP = self:_pickup_chance(80, 1.5)
+	self.hk21.fire_mode_data.fire_rate = 0.083
 	self.hk21.spread.standing = 3.8
 	self.hk21.spread.crouching = 3.2
 	self.hk21.spread.steelsight = 1.5
@@ -1109,6 +1143,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.m249.NR_CLIPS_MAX = 2
 	self.m249.AMMO_MAX = self.m249.CLIP_AMMO_MAX * self.m249.NR_CLIPS_MAX
 	self.m249.AMMO_PICKUP = self:_pickup_chance(90, 1.5)
+	self.m249.fire_mode_data.fire_rate = 0.066
 	self.m249.spread.standing = 4.3
 	self.m249.spread.crouching = 4
 	self.m249.spread.steelsight = 1.8
@@ -1133,6 +1168,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.rpk.NR_CLIPS_MAX = 3
 	self.rpk.AMMO_MAX = self.rpk.CLIP_AMMO_MAX * self.rpk.NR_CLIPS_MAX
 	self.rpk.AMMO_PICKUP = self:_pickup_chance(100, 1.5)
+	self.rpk.fire_mode_data.fire_rate = 0.08
 	self.rpk.spread.standing = 3.3
 	self.rpk.spread.crouching = 3
 	self.rpk.spread.steelsight = 1.8
@@ -1275,6 +1311,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.x_rage.use_data.selection_index = 4
 	self.x_sparrow.use_data.selection_index = 4
 	self.x_judge.use_data.selection_index = 4
+	self.judge.use_data.selection_index = 4
 	self.x_rota.use_data.selection_index = 4
 	self.shuno.use_data.selection_index = 4
 	self.system.use_data.selection_index = 4
@@ -1293,6 +1330,7 @@ Hooks:PostHook(WeaponTweakData, "init", "restore_init", function(self, tweak_dat
 	self.x_holt.use_data.selection_index = 4
 	self.m60.use_data.selection_index = 4
 	self.r700.use_data.selection_index = 4
+	self.saw_secondary.use_data.selection_index = 4
 end)
 
 Hooks:PostHook(WeaponTweakData, "_init_stats", "restore_init_stats", function(self)

@@ -59,7 +59,7 @@ function ExperienceManager:get_xp_by_params(params)
 		mission_xp_dissect = params.mission_xp or self:mission_xp()
 	end
 
-	base_xp = (job_xp_dissect + stage_xp_dissect + mission_xp_dissect) /2
+	base_xp = (job_xp_dissect + stage_xp_dissect + mission_xp_dissect) /3
 	pro_job_xp_dissect = math.round(base_xp * pro_job_multiplier - base_xp)
 	base_xp = base_xp + pro_job_xp_dissect
 	days_dissect = math.round(base_xp * days_multiplier - base_xp)

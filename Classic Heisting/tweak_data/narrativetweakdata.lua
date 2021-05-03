@@ -40,6 +40,8 @@ function NarrativeTweakData:init(tweak_data)
 		700000
 	}
 	self.jobs.alex_prof.heat = {this_job = -35, other_jobs = 10}
+	
+	self.jobs.welcome_to_the_jungle_wrapper_prof.professional = true
 
 	self.jobs.framing_frame_prof = deep_clone(self.jobs.framing_frame)
 	self.jobs.framing_frame_prof.jc = 60
@@ -71,6 +73,7 @@ function NarrativeTweakData:init(tweak_data)
 	self.jobs.watchdogs_wrapper_prof.heat = {this_job = -25, other_jobs = 20}
 
 	self.jobs.ukrainian_job_prof.jc = 30
+	self.jobs.ukrainian_job_prof.professional = true
 
 	self.jobs.branchbank_prof.jc = 50
 	self.jobs.branchbank_prof.professional = true

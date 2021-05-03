@@ -45,3 +45,6 @@ Hooks:PostHook(BlackMarketGui, "_setup", "restore_setup", function(self, is_star
 		}
 	}
 end)
+
+function BlackMarketGui:populate_weapon_cosmetics(data)
+end
